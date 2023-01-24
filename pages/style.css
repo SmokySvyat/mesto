@@ -37,6 +37,47 @@
 .profile {
     max-width: inherit;
     width: 100%;
+    padding: 40px 0 50px 0;
+    display: grid;
+    grid-template-columns: 120px 300px 1fr 150px;
+    grid-template-rows: repeat(2, auto-fit);
+    column-gap: 30px;
+}
+
+.profile__name {
+    grid-column: 2;
+    margin: 0;
+    align-self: end;
+    font-size: 42px;
+    line-height: 48px;
+    font-weight: 500;
+}
+
+.profile__job {
+    grid-column: 2;
+    margin: 0;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 400;
+}
+
+.profile__edit {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.add {
+    grid-column: 4;
+    grid-row: 1 / span 2;
+}
+
+.avatar {
+    box-sizing: border-box;
+    object-fit: cover;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    grid-row: 1 / span 2;
 }
 
 .cards {
