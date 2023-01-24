@@ -29,10 +29,25 @@
     width: 100%;
 }
 
+.main {
+    max-width: 880px;
+    width: 100%;
+}
+
+.profile {
+    max-width: inherit;
+    width: 100%;
+}
+
 .cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(auto-fit, 1fr);
     column-gap: 17px;
     row-gap: 20px;
+}
+
+.card {
+    max-width: 282px;
+    width: 100%;
 }
