@@ -1,0 +1,38 @@
+@import url(../vendor/normalize.css);
+@import url(../fonts/fonts.css);
+
+.root {
+    background-color: #000;
+    font-family: 'Inter';
+    color: #fff;
+    max-width: 1280px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    padding: 45px 200px 60px 200px;
+}
+
+.header {
+    display: flex;
+    box-sizing: inherit;
+    max-width: 880px;
+    width: 100%;
+    min-height: 74px;
+    border-bottom: 1px solid #545454;
+}
+
+.logo {
+    object-fit: contain;
+    max-width: 142px;
+    width: 100%;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(auto-fit, 1fr);
+    column-gap: 17px;
+    row-gap: 20px;
+}
