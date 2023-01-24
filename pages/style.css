@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    padding: 45px 200px 60px 200px;
+    padding: 45px 200px 0 200px;
 }
 
 .header {
@@ -37,11 +37,12 @@
 .profile {
     max-width: inherit;
     width: 100%;
-    padding: 40px 0 50px 0;
+    padding: 40px 0 51px 0;
     display: grid;
     grid-template-columns: 120px 300px 1fr 150px;
     grid-template-rows: repeat(2, auto-fit);
     column-gap: 30px;
+    row-gap: 8px;
 }
 
 .profile__name {
@@ -101,7 +102,6 @@
 }
 
 .card__img {
-    box-sizing: border-box;
     object-fit: cover;
     width: 282px;
     height: 282px;
@@ -113,7 +113,10 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    margin: 0 0 31px 21px;
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 900;
+    margin: 0 0 25px 21px;
     grid-column: 1;
     grid-row: 2;
 }
@@ -126,4 +129,18 @@
     justify-self: end;
     padding: 0;
     margin-right: 20px;
+}
+
+.footer {
+    min-height: 145px;
+    height: 100%;
+    display: flex;
+}
+
+.footer__copyright {
+    margin: 66px 0 0 0;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 400px;
+    color: #545454;
 }
