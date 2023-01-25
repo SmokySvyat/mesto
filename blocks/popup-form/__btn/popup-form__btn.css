@@ -12,3 +12,10 @@
     text-align: center;
     cursor: pointer;
 }
+
+@media screen and (max-width: 600px) {
+    .popup-form__btn {
+        width: 238px;
+        margin: 0;
+    }
+}
