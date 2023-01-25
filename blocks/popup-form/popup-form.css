@@ -1,0 +1,13 @@
+.popup-form {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    background-color: #fff;
+    color: #000;
+    width: 430px;
+    height: 330px;
+    padding: 34px 36px 37px 36px;
+    border-radius: 10px;
+    transition: 0.5s all;
+}
