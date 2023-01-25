@@ -11,3 +11,11 @@
     border-radius: 10px;
     transition: 0.5s all;
 }
+
+@media screen and (max-width: 600px) {
+    .popup-form {
+        width: 282px;
+        height: 322px;
+        padding: 25px 22px;
+    }
+}
