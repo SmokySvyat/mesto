@@ -3,3 +3,8 @@
     stroke: #000;
     stroke-width: 2px;
 }
+
+.svg-like.active {
+    stroke: #000;
+    fill: #000;
+}

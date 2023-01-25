@@ -14,6 +14,14 @@
 @import url(../blocks/profile/__edit/profile__edit.css);
 @import url(../blocks/add/add.css);
 
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/popup-container/popup-container.css);
+@import url(../blocks/popup-form/popup-form.css);
+@import url(../blocks/popup-form/__btn/popup-form__btn.css);
+@import url(../blocks/popup-form/__input/popup-form__input.css);
+@import url(../blocks/popup-form/__heading/popup-form__heading.css);
+
 @import url(../blocks/svg/svg.css);
 @import url(../blocks/svg-add/svg-add.css);
 @import url(../blocks/svg-edit/svg-edit.css);

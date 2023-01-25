@@ -19,8 +19,3 @@
     -o-transition: 0.3s ease;
     transition: 0.3s ease;
 }
-
-.card__like:active {
-    stroke: #000;
-    fill: #000;
-}
