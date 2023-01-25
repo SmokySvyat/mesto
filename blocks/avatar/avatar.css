@@ -8,3 +8,11 @@
     border-radius: 50%;
     grid-row: 1 / span 2;
 }
+
+@media screen and (max-width: 600px) {
+    .avatar {
+        margin-bottom: 26px;
+        justify-self: center;
+        grid-row: 1;
+    }
+}

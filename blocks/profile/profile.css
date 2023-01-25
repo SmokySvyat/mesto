@@ -7,3 +7,13 @@
     grid-template-rows: repeat(2, auto-fit);
     row-gap: 8px;
 }
+
+@media screen and (max-width: 600px) {
+    .profile {
+        box-sizing: border-box;
+        padding: 42px 19px 36px 19px;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, fit-content);
+        row-gap: 0;
+    }
+}

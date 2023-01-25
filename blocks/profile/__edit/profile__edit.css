@@ -29,3 +29,14 @@
     -o-transition: 0.15s ease;
     transition: 0.15s ease;
 }
+
+@media screen and (max-width: 600px) {
+    .profile__edit {
+        padding: 4px;
+        width: 18px;
+        height: 18px;
+        justify-self: end;
+        grid-column: 1;
+        grid-row: 2;
+    }
+}
