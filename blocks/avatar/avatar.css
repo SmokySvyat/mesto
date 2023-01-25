@@ -1,0 +1,10 @@
+.avatar {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    -o-object-fit: cover;
+       object-fit: cover;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    grid-row: 1 / span 2;
+}

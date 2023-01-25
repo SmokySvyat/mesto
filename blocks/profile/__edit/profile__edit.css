@@ -1,0 +1,31 @@
+.profile__edit {
+    grid-column: 3;
+    grid-row: 1;
+    width: 24px;
+    height: 24px;
+    margin: 8px 19px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    display: flex;
+    background-color: #000;
+    border: 1px solid #fff;
+    align-self: end;
+    cursor: pointer;
+    -webkit-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+
+.profile__edit:hover {
+    border: 1px solid #545454;
+    -webkit-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+
+.profile__edit:hover .svg{
+    fill: #545454;
+    -webkit-transition: 0.15s ease;
+    -o-transition: 0.15s ease;
+    transition: 0.15s ease;
+}

@@ -1,0 +1,11 @@
+.card {
+    max-width: 282px;
+    width: 100%;
+    background-color: #fff;
+    color: #000;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 42px;
+    grid-template-rows: 1fr 54px;
+    gap: 25px;
+}

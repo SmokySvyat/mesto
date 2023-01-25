@@ -1,0 +1,33 @@
+.add {
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    grid-column: 4;
+    grid-row: 1 / span 2;
+    background-color: #000;
+    border: 2px solid #fff;
+    max-height: 50px;
+    height: 100%;
+    align-self: center;
+    cursor: pointer;
+    -webkit-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+
+.add:hover{
+    border: 2px solid #545454;
+    -webkit-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+
+.add:hover .svg{
+    fill: #545454;
+    -webkit-transition: 0.15s ease;
+    -o-transition: 0.15s ease;
+    transition: 0.15s ease;
+}
