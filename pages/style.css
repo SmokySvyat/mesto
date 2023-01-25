@@ -183,10 +183,8 @@
 .cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(auto-fit, 1fr);
-    -webkit-column-gap: 17px;
-       -moz-column-gap: 17px;
-            column-gap: 17px;
+    grid-auto-rows: repeat(auto-fit, 1fr);
+    column-gap: 17px;
     row-gap: 20px;
 }
 
@@ -197,17 +195,18 @@
     color: #000;
     border-radius: 10px;
     display: grid;
-    grid-template-columns: 215px 42px;
-    grid-row: 282px 54px;
+    grid-template-columns: 1fr 42px;
+    grid-template-rows: 1fr 54px;
     gap: 25px;
 }
 
 .card__img {
-    -o-object-fit: cover;
-       object-fit: cover;
-    width: 282px;
-    height: 282px;
-    grid: 1 / span 2;
+    object-fit: cover;
+    max-width: 282px;
+    width: 100%;
+    max-height: 282px; 
+    height: 100%; 
+    grid-column: 1 / span 2;
     border-radius: 8px 8px 0 0;
 }
 
