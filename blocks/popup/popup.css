@@ -8,9 +8,3 @@
     opacity: 0;
     background-color: rgba(0, 0, 0, .5);
 }
-
-  .popup.active {
-    opacity: 1;
-    pointer-events: all;
-    transition: 0.5s all;
-}

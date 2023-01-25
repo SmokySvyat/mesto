@@ -2,10 +2,10 @@ function popupOpenClose() {
   let popupClassList = document.querySelector('.popup');
 
   if (popupClassList.classList.length > 1) {
-    popupClassList.classList.remove('active');
+    popupClassList.classList.remove('popup_active');
   }
   else {
-    popupClassList.classList.add('active');
+    popupClassList.classList.add('popup_active');
   }
 }
 
