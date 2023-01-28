@@ -7,14 +7,15 @@
     margin: 5px 20px 0 0;
     border: none;
     background-color: #fff;
+    background-image: url(../../../images/ico__like.svg);
     cursor: pointer;
     -webkit-transition: 0.3s ease;
     -o-transition: 0.3s ease;
     transition: 0.3s ease;
 }
 
-.card__like:hover .svg-like{
-    stroke: #545454;
+.card__like:hover {
+    opacity: 0.5;
     -webkit-transition: 0.3s ease;
     -o-transition: 0.3s ease;
     transition: 0.3s ease;

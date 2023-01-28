@@ -23,11 +23,6 @@
 @import url(../blocks/popup-form/__input/popup-form__input.css);
 @import url(../blocks/popup-form/__heading/popup-form__heading.css);
 
-@import url(../blocks/svg/svg.css);
-@import url(../blocks/svg-add/svg-add.css);
-@import url(../blocks/svg-edit/svg-edit.css);
-@import url(../blocks/svg-like/svg-like.css);
-
 @import url(../blocks/cards/cards.css);
 @import url(../blocks/card/card.css);
 @import url(../blocks/card/__img/card__img.css);

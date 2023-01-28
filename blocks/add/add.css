@@ -8,6 +8,9 @@
     grid-column: 4;
     grid-row: 1 / span 2;
     background-color: #000;
+    background-image: url(../../images/ico__plus.svg);
+    background-repeat: no-repeat;
+    background-position: center;
     border: 2px solid #fff;
     height: 50px;
     align-self: center;
@@ -18,17 +21,10 @@
 }
 
 .add:hover{
-    border: 2px solid #545454;
+    opacity: 0.6;
     -webkit-transition: 0.3s ease;
     -o-transition: 0.3s ease;
     transition: 0.3s ease;
-}
-
-.add:hover .svg{
-    fill: #545454;
-    -webkit-transition: 0.15s ease;
-    -o-transition: 0.15s ease;
-    transition: 0.15s ease;
 }
 
 @media screen and (max-width: 600px) {

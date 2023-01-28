@@ -7,6 +7,9 @@
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
     display: flex;
+    background-image: url(../../../images/ico__pencil.svg);
+    background-repeat: no-repeat;
+    background-position: center;
     background-color: #000;
     border: 1px solid #fff;
     align-self: end;
@@ -17,17 +20,10 @@
 }
 
 .profile__edit:hover {
-    border: 1px solid #545454;
+    opacity: 0.6;
     -webkit-transition: 0.3s ease;
     -o-transition: 0.3s ease;
     transition: 0.3s ease;
-}
-
-.profile__edit:hover .svg{
-    fill: #545454;
-    -webkit-transition: 0.15s ease;
-    -o-transition: 0.15s ease;
-    transition: 0.15s ease;
 }
 
 @media screen and (max-width: 600px) {
