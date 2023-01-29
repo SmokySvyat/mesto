@@ -1,18 +1,19 @@
-function popupOpenClose() {
-  let popupClassList = document.querySelector('.popup');
+let popupClassList = document.querySelector('.popup');
+let userName = document.querySelector('.profile__name');
+let userJob = document.querySelector('.profile__job');
 
+function popupOpenClose() {
   if (popupClassList.classList.length > 1) {
-    popupClassList.classList.remove('popup_active');
+    popupClassList.classList.toggle('popup_active');
   }
   else {
-    popupClassList.classList.add('popup_active');
-  }
+    popupClassList.classList.toggle('popup_active');
+    document.querySelector('#name').value = userName.textContent;
+    document.querySelector('#job').value = userJob.textContent;
+  }  
 }
 
 function handleFormSubmit(evt) {
-  let userName = document.querySelector('.profile__name');
-  let userJob = document.querySelector('.profile__job');
-
   evt.preventDefault(evt);
   let userNameNew = document.querySelector('#name').value;
   let userJobNew = document.querySelector('#job').value;
@@ -21,6 +22,8 @@ function handleFormSubmit(evt) {
   // debugger
   userName.textContent = userNameNew;
   userJob.textContent = userJobNew;
+
+  popupOpenClose();
 }
 
 let form = document.querySelector('.popup-form');

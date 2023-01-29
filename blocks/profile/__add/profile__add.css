@@ -1,4 +1,4 @@
-.add {
+.profile__add {
     padding: 0;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -8,10 +8,11 @@
     grid-column: 4;
     grid-row: 1 / span 2;
     background-color: #000;
-    background-image: url(../../images/ico__plus.svg);
+    background-image: url(../../../images/ico__plus.svg);
     background-repeat: no-repeat;
     background-position: center;
     border: 2px solid #fff;
+    border-radius: 2px;
     height: 50px;
     align-self: center;
     cursor: pointer;
@@ -20,7 +21,7 @@
     transition: 0.3s ease;
 }
 
-.add:hover{
+.profile__add:hover{
     opacity: 0.6;
     -webkit-transition: 0.3s ease;
     -o-transition: 0.3s ease;
@@ -28,8 +29,9 @@
 }
 
 @media screen and (max-width: 600px) {
-    .add {
+    .profile__add {
         grid-column: 1;
         grid-row: 4;
+        background-size: 6%;
     }
 }

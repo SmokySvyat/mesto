@@ -1,4 +1,4 @@
-.avatar {
+.profile__avatar {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
     -o-object-fit: cover;
@@ -10,7 +10,7 @@
 }
 
 @media screen and (max-width: 600px) {
-    .avatar {
+    .profile__avatar {
         margin-bottom: 26px;
         justify-self: center;
         grid-row: 1;

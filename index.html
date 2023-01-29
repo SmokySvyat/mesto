@@ -1,89 +1,92 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="pages/index.css">
   <title lang="en">Mesto Russia</title>
-  <meta name="description" content="Un blog di la ragazza cha ama viaggiare">
-  <meta name="keywords" content="blog viaggiare">
-  <meta name="author" content="Svyat">
+  <meta name="description" content="#">
+  <meta name="keywords" content="#">
+  <meta lang="en" name="author" content="Svyat">
 </head>
 
 <body class="root">
     <header class="header">
-        <a class="logo" href="index.html"><img src="images/logo.svg" alt="il logo di progetto"></a>
+        <a class="logo" href="index.html"><img src="images/logo.svg" alt="логотип проекта"></a>
     </header>
     <main class="main">
         <section class="profile">
-            <img class="avatar" src="images/avatar.jpg" alt="una ragazza">
-            <h1 class="profile__name">Beatrice Pentasuglia</h1>
-            <p class="profile__job">Giornalista, viaggiatrice</p>
-            <button class="profile__edit">
+            <img class="profile__avatar" src="images/avatar.jpg" alt="аватар пользователя">
+            <h1 class="profile__name">Нинель Зарджавелли</h1>
+            <p class="profile__job">Журналист, путешественница</p>
+            <button class="profile__edit" type="button" aria-label="Редактировать">
             </button>
             
-            <button class="add">
+            <button class="profile__add" type="button" aria-label="Добавить фотографию">
             </button>
 
-            <div class="popup">
-                <div class="popup-container">
-                    <img class="popup__close" src="images/ico__cross.svg" alt="croce bianca">
-                    <form class="popup-form">
-                      <h2 class="popup-form__heading">Modifica informazioni</h2>
-                      <input id="name" class="popup-form__input" type="text" name="name" placeholder="Il tuo nome" value="Beatrice Pentasuglia">
-                      <input id="job" class="popup-form__input" type="text" name="job" placeholder="Su di te" value="Giornalista, viaggiatrice">
-                      <input class="popup-form__btn" type="submit" value="Salva">
-                    </form>
-                </div>
-              </div>
         </section>
-        <ul class="cards">
-            <li class="card">
-                <img class="card__img" src="images/malpensa_rw.jpg" alt="Malpensa pista di decollo">
-                <h2 class="card__text">Ciao Italia!</h2>
-                <button class="card__like">
-                </button>
-            </li>
+        <section>
+            <ul class="cards">
+                <li class="card">
+                    <img class="card__img" src="images/malpensa_rw.jpg" alt="вид из окна самолёта. Мальпенса">
+                    <h2 class="card__text">Ciao Italia!</h2>
+                    <button class="card__like" type="button" aria-label="Нравится">
+                    </button>
+                </li>
 
-            <li class="card">
-                <img class="card__img" src="images/sheremetyevo.jpg" alt="l'aeroporto Sheremetyevo">
-                <h2 class="card__text">Привет Россия!</h2>
-                <button class="card__like">
-                </button>
-            </li>
+                <li class="card">
+                    <img class="card__img" src="images/sheremetyevo.jpg" alt="Самолёт на пироне. Шереметьево">
+                    <h2 class="card__text">Привет Россия!</h2>
+                    <button class="card__like" type="button" aria-label="Нравится">
+                    </button>
+                </li>
 
-            <li class="card">
-                <img class="card__img" src="images/kremlin_moscow.jpg" alt="cremlino di notte a Mosca">
-                <h2 class="card__text">Cremlino a Mosca</h2>
-                <button class="card__like">
-                </button>
-            </li>
+                <li class="card">
+                    <img class="card__img" src="images/kremlin_moscow.jpg" alt="кремль ночью в москве">
+                    <h2 class="card__text">Cremlino a Mosca</h2>
+                    <button class="card__like" type="button" aria-label="Нравится">
+                    </button>
+                </li>
 
-            <li class="card">
-                <img class="card__img" src="images/kremlin_kazan.jpg" alt="cremlino di notte a Kazan">
-                <h2 class="card__text">Cremlino a Kazan</h2>
-                <button class="card__like">
-                </button>
-            </li>
+                <li class="card">
+                    <img class="card__img" src="images/kremlin_kazan.jpg" alt="кремль ночью в Казани">
+                    <h2 class="card__text">Cremlino a Kazan</h2>
+                    <button class="card__like" type="button" aria-label="Нравится">
+                    </button>
+                </li>
 
-            <li class="card">
-                <img class="card__img" src="images/nsk_squirrel.jpg" alt="scoiattolo con una noce su un albero">
-                <h2 class="card__text">Che bella!</h2>
-                <button class="card__like">
-                </button>
-            </li>
+                <li class="card">
+                    <img class="card__img" src="images/nsk_squirrel.jpg" alt="белка с орешком на дереве">
+                    <h2 class="card__text">Che bella!</h2>
+                    <button class="card__like" type="button" aria-label="Нравится">
+                    </button>
+                </li>
 
-            <li class="card">
-                <img class="card__img" src="images/nsk_cat.jpg" alt="il gatto che gioca con le gambe">
-                <h2 class="card__text">Giocoso e birichino il gatto </h2>
-                <button class="card__like">
-                </button>
-            </li>
-        </ul>
+                <li class="card">
+                    <img class="card__img" src="images/nsk_cat.jpg" alt="кот играет с ногами">
+                    <h2 class="card__text">Giocoso e birichino il gatto </h2>
+                    <button class="card__like" type="button" aria-label="Нравится">
+                    </button>
+                </li>
+            </ul>
+        </section>
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
     </footer>
+
+    <div class="popup">
+        <div class="popup__container">
+            <button class="popup__close" type="button"></button>
+            <form name="profile-form" class="popup-form">
+              <h2 class="popup-form__heading">Редактировать профиль</h2>
+              <input id="name" class="popup-form__input" type="text" name="name" placeholder="Ваше имя">
+              <input id="job" class="popup-form__input" type="text" name="job" placeholder="Кратко о себе">
+              <input class="popup-form__btn" type="submit" value="Сохранить">
+            </form>
+        </div>
+      </div>
 
     <script src="scripts/index.js"></script>
 </body>

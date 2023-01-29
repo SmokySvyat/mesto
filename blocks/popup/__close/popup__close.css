@@ -1,12 +1,26 @@
 .popup__close {
       margin-bottom: 8px;
+      padding: 0;
       cursor: pointer;
-      height: 32px;
+      min-width: 32px;
+      min-height: 32px;
       align-self: flex-end;
       transition: all 0.2s ease-in-out;
+      background-color: unset;
+      border: unset;
+      background-image: url(../../../images/ico__cross.svg);
+      background-position: center;
+      background-size: cover;
 }
 
 .popup__close:hover {
       opacity: 0.6;
       transition: all 0.2s ease-in-out;
+}
+
+@media screen and (max-width: 600px) {
+      .popup__close {
+            min-height: 22px;
+            min-width: 22px;
+      }
 }
