@@ -1,10 +1,13 @@
 .popup__close {
+      position: relative;
+      top: 0;
+      left: 100%;
       margin-bottom: 8px;
+      margin-left: 8px;
       padding: 0;
       cursor: pointer;
       min-width: 32px;
       min-height: 32px;
-      align-self: flex-end;
       transition: all 0.2s ease-in-out;
       background-color: unset;
       border: unset;
@@ -20,6 +23,8 @@
 
 @media screen and (max-width: 600px) {
       .popup__close {
+            top: 0;
+            left: 90%;
             min-height: 22px;
             min-width: 22px;
       }

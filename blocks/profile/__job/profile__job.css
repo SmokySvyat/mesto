@@ -1,4 +1,8 @@
 .profile__job {
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
     grid-column: 2;
     margin: 0 0 0 30px;
     font-size: 18px;

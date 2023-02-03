@@ -1,4 +1,4 @@
-.popup_active {
+.popup-bg_active {
     opacity: 1;
     pointer-events: all;
     transition: 0.5s all;
