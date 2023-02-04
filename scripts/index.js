@@ -1,4 +1,4 @@
-let popupClassList = document.querySelector('.popup-bg');
+let popup = document.querySelector('.popup');
 let userName = document.querySelector('.profile__name');
 let userJob = document.querySelector('.profile__job');
 let form = document.querySelector('.popup-form');
@@ -8,28 +8,25 @@ let nameValue = document.querySelector('#name');
 let jobValue = document.querySelector('#job');
 
 function popupOpenClose() {
-    popupClassList.classList.toggle('popup-bg_active');
-    getValueNameJob();
-}
-
-function getValueNameJob() {
-    nameValue.value = userName.textContent;
-    jobValue.value = userJob.textContent;
+    popup.classList.toggle('popup_active');
 }
 
 function handleFormSubmit(evt) {
   evt.preventDefault(evt);
   let userNameNew = nameValue.value;
   let userJobNew = jobValue.value;
-  // console.log(userNameNew);
-  // console.log(userJobNew);
-  // debugger
+  
   userName.textContent = userNameNew;
   userJob.textContent = userJobNew;
 
   popupOpenClose();
 }
 
-form.addEventListener('submit', handleFormSubmit);
-edit.addEventListener('click', popupOpenClose);
+edit.addEventListener('click', () => {
+  nameValue.value = userName.textContent;
+  jobValue.value = userJob.textContent;
+
+  popupOpenClose();
+});
 close.addEventListener('click', popupOpenClose);
+form.addEventListener('submit', handleFormSubmit);
