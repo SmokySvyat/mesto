@@ -29,44 +29,50 @@
         <section>
             <ul class="cards">
                 <li class="card">
+                    <button class="card__del"></button>
                     <img class="card__img" src="images/malpensa_rw.jpg" alt="вид из окна самолёта. Мальпенса">
                     <h2 class="card__text">Ciao Italia!</h2>
-                    <button class="card__like" type="button" aria-label="Нравится">
+                    <button class="card__like" type="button" aria-label="Нравится" data-path="one">
                     </button>
                 </li>
 
                 <li class="card">
+                    <button class="card__del"></button>
                     <img class="card__img" src="images/sheremetyevo.jpg" alt="Самолёт на пироне. Шереметьево">
                     <h2 class="card__text">Привет Россия!</h2>
-                    <button class="card__like" type="button" aria-label="Нравится">
+                    <button class="card__like" type="button" aria-label="Нравится" data-path="two">
                     </button>
                 </li>
 
                 <li class="card">
+                    <button class="card__del"></button>
                     <img class="card__img" src="images/kremlin_moscow.jpg" alt="кремль ночью в москве">
                     <h2 class="card__text">Cremlino a Mosca</h2>
-                    <button class="card__like" type="button" aria-label="Нравится">
+                    <button class="card__like" type="button" aria-label="Нравится" data-path="three">
                     </button>
                 </li>
 
                 <li class="card">
+                    <button class="card__del"></button>
                     <img class="card__img" src="images/kremlin_kazan.jpg" alt="кремль ночью в Казани">
                     <h2 class="card__text">Cremlino a Kazan</h2>
-                    <button class="card__like" type="button" aria-label="Нравится">
+                    <button class="card__like" type="button" aria-label="Нравится" data-path="four">
                     </button>
                 </li>
 
                 <li class="card">
+                    <button class="card__del"></button>
                     <img class="card__img" src="images/nsk_squirrel.jpg" alt="белка с орешком на дереве">
                     <h2 class="card__text">Che bella!</h2>
-                    <button class="card__like" type="button" aria-label="Нравится">
+                    <button class="card__like" type="button" aria-label="Нравится" data-path="five">
                     </button>
                 </li>
 
                 <li class="card">
+                    <button class="card__del"></button>
                     <img class="card__img" src="images/nsk_cat.jpg" alt="кот играет с ногами">
                     <h2 class="card__text">Giocoso e birichino il gatto </h2>
-                    <button class="card__like" type="button" aria-label="Нравится">
+                    <button class="card__like" type="button" aria-label="Нравится" data-path="six">
                     </button>
                 </li>
             </ul>
@@ -76,7 +82,7 @@
         <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
     </footer>
 
-    <div class="popup">
+    <div id="popup-edit" class="popup">
         <div class="popup__container">
             <button class="popup__close" type="button" aria-label="Закрыть форму редактирования"></button>
             <form name="profile-form" class="popup-form">
@@ -87,6 +93,28 @@
             </form>
         </div>
     </div>
+
+    <div id="popup-add" class="popup">
+        <div class="popup__container">
+            <button class="popup__close" type="button" aria-label="Закрыть форму добавления картинки"></button>
+            <form name="profile-form" class="popup-form">
+                <h2 class="popup-form__heading">Новое место</h2>
+                <input id="place" class="popup-form__input" type="text" name="place" placeholder="Название">
+                <input id="place-link" class="popup-form__input" type="text" name="place-link" placeholder="Ссылка на картинку">
+                <input class="popup-form__btn" type="submit" value="Создать">
+            </form>
+        </div>
+    </div>
+
+    <template id="card">
+        <li class="card">
+            <button class="card__del" type="button" aria-label="Удалить"></button>
+            <img id="place-img" class="card__img" alt="">
+            <h2 id="place-name" class="card__text"></h2>
+            <button class="card__like" type="button" aria-label="Нравится" data-path="template">
+            </button>
+        </li>
+    </template>
 
     <script src="scripts/index.js"></script>
 </body>
