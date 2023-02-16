@@ -26,6 +26,7 @@ const initialCards = [
 ]; 
 let popupEdit = document.querySelector('#popup-edit');
 let popupAdd = document.querySelector('#popup-add');
+let popupImg = document.querySelector('#popup-img');
 
 let userName = document.querySelector('.profile__name');
 let userJob = document.querySelector('.profile__job');
@@ -43,16 +44,36 @@ let placeImg = document.querySelector('#place-img');
 let placeValue = popupAdd.querySelector('#place');
 let placeLinkValue = popupAdd.querySelector('#place-link');
 
-// let btnsLike = document.querySelectorAll('.card__like');
+const cardsBlock = document.querySelector('.cards');
+cardsBlock.addEventListener('click', (event) => {
+  const eventTarget = event.target;
+  console.log(eventTarget.classList);
+  if (eventTarget.classList.contains('card__like') || eventTarget.classList.contains('card__like_active')) {
+    if (eventTarget.classList.contains('card__like')) {
+      eventTarget.classList.remove('card__like')
+      eventTarget.classList.add('card__like_active')
+    }
+    else {
+      eventTarget.classList.remove('card__like_active')
+      eventTarget.classList.add('card__like')
+    }
+  }
 
-// btnsLike.forEach((el) => {
-//   el.addEventListener('click', (e) => {
-//     let path = e.currentTarget.getAttribute('data-path');
-//     console.log(path);
-//   });
-// });
+  else if (eventTarget.classList.contains(`card__del`)) {
+    const card = eventTarget.closest('.card')
+    card.remove();
+  }
 
-function deleteCard() {}
+  else if (eventTarget.classList.contains('card__img')){
+    const imgLink = eventTarget.getAttribute('src');
+    const imgHeading = eventTarget.nextSibling.textContent;
+
+    popupImg.querySelector('.popup__image').setAttribute('src', imgLink)
+    popupImg.classList.toggle('popup_active');
+    console.log(imgLink)
+    console.log(imgHeading)
+  }
+});
 
 function popupAddOpenClose() {
   popupAdd.classList.toggle('popup_active');
