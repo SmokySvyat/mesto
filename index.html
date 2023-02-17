@@ -28,53 +28,7 @@
         </section>
         <section>
             <ul class="cards">
-                <li class="card">
-                    <button class="card__del"></button>
-                    <img class="card__img" src="images/malpensa_rw.jpg" alt="вид из окна самолёта. Мальпенса">
-                    <h2 class="card__text">Ciao Italia!</h2>
-                    <button class="card__like" type="button" aria-label="Нравится" data-path="one">
-                    </button>
-                </li>
-
-                <li class="card">
-                    <button class="card__del"></button>
-                    <img class="card__img" src="images/sheremetyevo.jpg" alt="Самолёт на пироне. Шереметьево">
-                    <h2 class="card__text">Привет Россия!</h2>
-                    <button class="card__like" type="button" aria-label="Нравится" data-path="two">
-                    </button>
-                </li>
-
-                <li class="card">
-                    <button class="card__del"></button>
-                    <img class="card__img" src="images/kremlin_moscow.jpg" alt="кремль ночью в москве">
-                    <h2 class="card__text">Cremlino a Mosca</h2>
-                    <button class="card__like" type="button" aria-label="Нравится" data-path="three">
-                    </button>
-                </li>
-
-                <li class="card">
-                    <button class="card__del"></button>
-                    <img class="card__img" src="images/kremlin_kazan.jpg" alt="кремль ночью в Казани">
-                    <h2 class="card__text">Cremlino a Kazan</h2>
-                    <button class="card__like" type="button" aria-label="Нравится" data-path="four">
-                    </button>
-                </li>
-
-                <li class="card">
-                    <button class="card__del"></button>
-                    <img class="card__img" src="images/nsk_squirrel.jpg" alt="белка с орешком на дереве">
-                    <h2 class="card__text">Che bella!</h2>
-                    <button class="card__like" type="button" aria-label="Нравится" data-path="five">
-                    </button>
-                </li>
-
-                <li class="card">
-                    <button class="card__del"></button>
-                    <img class="card__img" src="images/nsk_cat.jpg" alt="кот играет с ногами">
-                    <h2 class="card__text">Giocoso e birichino il gatto </h2>
-                    <button class="card__like" type="button" aria-label="Нравится" data-path="six">
-                    </button>
-                </li>
+                
             </ul>
         </section>
     </main>
@@ -114,12 +68,12 @@
         </div>
     </div>
 
-    <template id="card">
+    <template id="card-template">
         <li class="card">
             <button class="card__del" type="button" aria-label="Удалить"></button>
-            <img id="place-img" class="card__img" alt="">
+            <img id="place-img" class="card__img" src="" alt="">
             <h2 id="place-name" class="card__text"></h2>
-            <button class="card__like" type="button" aria-label="Нравится" data-path="template">
+            <button id="like" class="card__like" type="button" aria-label="Нравится" data-path="template">
             </button>
         </li>
     </template>
