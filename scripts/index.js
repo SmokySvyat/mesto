@@ -91,7 +91,6 @@ const handleDeleteCard = (event) => {
 //Like
 const handleLikeCard = (event) => {
   const eventTarget = event.target;
-  console.log(eventTarget.classList);
   if (eventTarget.classList.contains('card__like') || eventTarget.classList.contains('card__like_active')) {
     if (eventTarget.classList.contains('card__like')) {
       eventTarget.classList.remove('card__like');
