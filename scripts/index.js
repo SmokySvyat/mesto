@@ -47,42 +47,27 @@ const placeValue = popupAdd.querySelector('#place');
 const placeLinkValue = popupAdd.querySelector('#place-link');
 
 
-// cardsBlock.addEventListener('click', (event) => {
-//   const eventTarget = event.target;
-//   console.log(eventTarget.classList);
-  // if (eventTarget.classList.contains('card__like') || eventTarget.classList.contains('card__like_active')) {
-  //   if (eventTarget.classList.contains('card__like')) {
-  //     eventTarget.classList.remove('card__like')
-  //     eventTarget.classList.add('card__like_active')
-  //   }
-  //   else {
-  //     eventTarget.classList.remove('card__like_active')
-  //     eventTarget.classList.add('card__like')
-  //   }
-  // }
+//Edit
+function popupEditOpenClose() {
+  popupEdit.classList.toggle('popup_active');
+};
 
-  // else if (eventTarget.classList.contains(`card__del`)) {
-  //   const card = eventTarget.closest('.card')
-  //   card.remove();
-  // }
+function handleFormSubmitEdit(evt) {
+  evt.preventDefault(evt);
+  const userNameNew = nameValue.value;
+  const userJobNew = jobValue.value;
+  
+  userName.textContent = userNameNew;
+  userJob.textContent = userJobNew;
 
-  //else//
-//   if (eventTarget.classList.contains('card__img')){
-//     const imgLink = eventTarget.getAttribute('src');
-//     const imgHeading = eventTarget;
-
-//     popupImg.querySelector('.popup__image').setAttribute('src', imgLink)
-//     popupImg.classList.toggle('popup_active');
-//     console.log(imgLink)
-//     console.log(imgHeading)
-//   }
-// });
+  popupEditOpenClose();
+};
 
 
 //Add
 function popupAddOpenClose() {
   popupAdd.classList.toggle('popup_active');
-}
+};
 
 function addCard(evt) {
   evt.preventDefault(evt);
@@ -94,18 +79,16 @@ function addCard(evt) {
 
   renderCard(initialCards[0]);
   popupAddOpenClose();
-}
+};
 
 
-//Delete 
-
+//Delete
 const handleDeleteCard = (event) => {
   event.target.closest('.card').remove();
 };
 
 
 //Like
-
 const handleLikeCard = (event) => {
   const eventTarget = event.target;
   console.log(eventTarget.classList);
@@ -117,28 +100,24 @@ const handleLikeCard = (event) => {
     else {
       eventTarget.classList.remove('card__like_active');
       eventTarget.classList.add('card__like');
-    }
-  }
+    };
+  };
 };
 
 
 //Img popup
-
 const popupImgOpen = (event) => {
   popupImg.classList.toggle('popup_active-image');
 
   const imgLink = event.target.getAttribute('src');
-  const imgHeading = event.target.nextSibling.textContent;
+  const imgHeading = event.target.closest('.card').querySelector('#place-name').textContent;
 
   popupImg.querySelector('.popup__image').setAttribute('src', imgLink);
-
-  console.log(imgLink)
-  console.log(imgHeading)
+  popupImg.querySelector('.popup__image-container').querySelector('.popup__heading').textContent = imgHeading;
 };
 
 
 //Render cards
-
 const renderCard = (element) => {
   cardsBlock.prepend(generateCard(element));
 };
@@ -162,23 +141,7 @@ function generateCard(element) {
 };
 
 
-//Edit
-function popupEditOpenClose() {
-  popupEdit.classList.toggle('popup_active');
-};
-
-function handleFormSubmitEdit(evt) {
-  evt.preventDefault(evt);
-  const userNameNew = nameValue.value;
-  const userJobNew = jobValue.value;
-  
-  userName.textContent = userNameNew;
-  userJob.textContent = userJobNew;
-
-  popupEditOpenClose();
-};
-
-
+//Begining
 initialCards.forEach((element) => {
   renderCard(element);
 });
