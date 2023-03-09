@@ -31,6 +31,7 @@ const popupAdd = document.querySelector('#popup-add');
 const popupImg = document.querySelector('#popup-img');
 const imageIntoPopup = popupImg.querySelector('.popup__image');
 const imageIntoPopupHeading = popupImg.querySelector('.popup__heading');
+const overlays = Array.from(document.querySelectorAll('.popup'));
 
 const editBtn = document.querySelector('.profile__edit');
 const addBtn = document.querySelector('.profile__add')
@@ -46,6 +47,16 @@ const cardTemplate = document.getElementById('card-template').content;
 const placeValue = popupAdd.querySelector('#place');
 const placeLinkValue = popupAdd.querySelector('#place-link');
 const addedCards = [];
+const validationOptions = {
+  formSelector: '.popup-form',
+  inputSelector: '.popup-form__input',
+  submitButtonSelector: '.popup-form__btn',
+  inactiveButtonClass: 'popup-form__btn_inactive',
+  inputErrorClass: 'popup-form__input_invalid',
+  errorClass: 'popup__error_active',
+  errorText: '.popup__error',
+  errorClosestParent: '.popup-form__input-section'
+};
 
 
 //Edit
@@ -133,12 +144,30 @@ const openPopupImg = (event) => {
 
 //Popup
 function openPopup (popup) {
-  popup.classList.add('popup_active')
-}
+  popup.classList.add('popup_active');
+  addHandleKey(popup);
+};
 
 function closePopup (popup) {
-  popup.classList.remove('popup_active')
-}
+  popup.classList.remove('popup_active');
+  removeHandleKey(popup);
+};
+
+const addHandleKey = (popup) => {
+  document.addEventListener('keydown', handleKey(popup));
+};
+
+const removeHandleKey = (popup) => {
+  document.removeEventListener('keydown', handleKey(popup));
+};
+
+const handleKey = (popup) => {
+  document.addEventListener('keydown', (event) => {
+    if (event.key ==='Escape') {
+      closePopup(popup)
+    };
+  });
+};
 
 
 //Begining
@@ -156,6 +185,15 @@ closeBtns.forEach((button) => {
   button.addEventListener('click', () => {closePopup(popup)});
 });
 
+overlays.forEach((overlay) => {
+  overlay.addEventListener('click', (evt) => {
+    if (evt.target === overlay) {
+    closePopup(overlay);
+    };    
+  });
+});
+
 addBtn.addEventListener('click', () => {openPopup(popupAdd)});
 popupEdit.addEventListener('submit', handleFormSubmitEdit);
 popupAdd.addEventListener('submit', addCard);
+enableValidation(validationOptions);
