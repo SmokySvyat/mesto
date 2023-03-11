@@ -1,30 +1,3 @@
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'images/nsk_cat.jpg'
-  }
-];
-
 const cardsBlock = document.querySelector('.cards');
 const popupEdit = document.querySelector('#popup-edit');
 const popupAdd = document.querySelector('#popup-add');
@@ -36,6 +9,7 @@ const overlays = Array.from(document.querySelectorAll('.popup'));
 const editBtn = document.querySelector('.profile__edit');
 const addBtn = document.querySelector('.profile__add')
 const closeBtns = document.querySelectorAll('.popup__close');
+const submitAddBtn = popupAdd.querySelector('.popup-form__btn');
 
 const userName = document.querySelector('.profile__name');
 const userJob = document.querySelector('.profile__job');
@@ -44,19 +18,10 @@ const nameValue = document.querySelector('#name');
 const jobValue = document.querySelector('#job');
 
 const cardTemplate = document.getElementById('card-template').content;
+const formAdd = popupAdd.querySelector('.popup-form');
 const placeValue = popupAdd.querySelector('#place');
 const placeLinkValue = popupAdd.querySelector('#place-link');
 const addedCards = [];
-const validationOptions = {
-  formSelector: '.popup-form',
-  inputSelector: '.popup-form__input',
-  submitButtonSelector: '.popup-form__btn',
-  inactiveButtonClass: 'popup-form__btn_inactive',
-  inputErrorClass: 'popup-form__input_invalid',
-  errorClass: 'popup__error_active',
-  errorText: '.popup__error',
-  errorClosestParent: '.popup-form__input-section'
-};
 
 
 //Edit
@@ -76,15 +41,14 @@ function handleFormSubmitEdit(evt) {
 function addCard(evt) {
   evt.preventDefault(evt);
 
-  addedCards.unshift({
+  renderCard({
     name: placeValue.value,
     link: placeLinkValue.value
   });
+  
+  formAdd.reset();
+  setButtonInactive(submitAddBtn, validationOptions.inactiveButtonClass);
 
-  placeValue.value = ``;
-  placeLinkValue.value = ``;
-
-  renderCard(addedCards[0]);
   closePopup(popupAdd);
 };
 
@@ -111,7 +75,7 @@ function generateCard(element) {
   const listItem = cardTemplate.querySelector('.card').cloneNode(true);
   const deleteBtn = listItem.querySelector('.card__del');
   const likeBtn = listItem.querySelector('#like');
-  const img = listItem.querySelector('#place-img');
+  const img = listItem.querySelector('.card__img');
   const name = element.name;
   const link = element.link;
 
@@ -132,7 +96,7 @@ function generateCard(element) {
 //Img popup
 const openPopupImg = (event) => {
   const imgLink = event.target.getAttribute('src'); 
-  const imgHeading = event.target.closest('.card').querySelector('#place-name').textContent; 
+  const imgHeading = event.target.getAttribute('alt')
 
   imageIntoPopup.setAttribute('src', imgLink);
   imageIntoPopup.setAttribute('alt', imgHeading);
@@ -145,29 +109,28 @@ const openPopupImg = (event) => {
 //Popup
 function openPopup (popup) {
   popup.classList.add('popup_active');
-  addHandleKey(popup);
+  addHandleKey();
 };
 
 function closePopup (popup) {
   popup.classList.remove('popup_active');
-  removeHandleKey(popup);
+  removeHandleKey();
 };
 
-const addHandleKey = (popup) => {
-  document.addEventListener('keydown', handleKey(popup));
+const addHandleKey = () => {
+  document.addEventListener('keydown', handleKey);
 };
 
-const removeHandleKey = (popup) => {
-  document.removeEventListener('keydown', handleKey(popup));
+const removeHandleKey = () => {
+  document.removeEventListener('keydown', handleKey);
 };
 
-const handleKey = (popup) => {
-  document.addEventListener('keydown', (event) => {
+const handleKey = (event) => {
     if (event.key ==='Escape') {
-      closePopup(popup)
+      const activePopup = document.querySelector('.popup_active');
+      closePopup(activePopup);
     };
-  });
-};
+  };
 
 
 //Begining
@@ -188,8 +151,8 @@ closeBtns.forEach((button) => {
 overlays.forEach((overlay) => {
   overlay.addEventListener('click', (evt) => {
     if (evt.target === overlay) {
-    closePopup(overlay);
-    };    
+    closePopup(overlay); // По поводу "поехали отступы" не понял совершенно. Будьте добры, прикрепите скриншот, на следующей итерации.
+    };                   // Если речь идёт о крестике, то я видел изменения в макете к 6му спринту, но в задании уточнения небыло и я не стал переделывать.
   });
 });
 

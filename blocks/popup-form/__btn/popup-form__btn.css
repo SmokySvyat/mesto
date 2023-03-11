@@ -1,7 +1,7 @@
 .popup-form__btn {
     width: 358px;
     min-height: 50px;
-    margin: 27px 0 0 0;
+    margin: 15px 0 0 0;
     border-radius: 2px;
     border: 0;
     background-color: #000;
@@ -14,7 +14,7 @@
     transition: all 0.2s ease-in-out;
 }
 
-.popup-form__btn:hover {
+.popup-form__btn:not([disabled]):hover {
     opacity: 0.8;
     transition: all 0.2s ease-in-out;
 }

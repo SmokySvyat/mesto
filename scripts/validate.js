@@ -16,7 +16,7 @@ function setButtonActive (submitElement, inactiveButtonClass) {
 };
 
 function setButtonInactive (submitElement, inactiveButtonClass) {
-  submitElement.setAttribute('disabled', 'disabled');
+  submitElement.setAttribute('disabled', 'true');
   submitElement.classList.add(inactiveButtonClass);
 };
 
@@ -48,11 +48,11 @@ const setEventListeners = (form, options) => {
 
   
   const toggleBtnState = (inputs, submitElement, inactiveButtonClass) => {
-    const formIsValid = inputs.every((inputElement) => {
+    const isFormValid = inputs.every((inputElement) => {
       return inputElement.validity.valid;
     });
 
-    if (formIsValid) {
+    if (isFormValid) {
       setButtonActive (submitElement, inactiveButtonClass);
     } else {
       setButtonInactive (submitElement, inactiveButtonClass);
