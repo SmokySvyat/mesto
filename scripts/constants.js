@@ -39,9 +39,11 @@ const validationOptions = {
 const cardTemplateOptions = {
   templateSelector: 'card-template',
   cardSelector: '.card',
+  cardHeadingSelector: '.card__text',
   deleteBtnSelector: '.card__del',
   likeBtnSelector: '.card__like',
-  imgSelector: '.card__img'
+  imgSelector: '.card__img',
+  likeBtnClass: 'card__like_active'
 }
 
 export {initialCards, validationOptions, cardTemplateOptions}
