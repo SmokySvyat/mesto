@@ -40,6 +40,7 @@ const cardTemplateOptions = {
   templateSelector: 'card-template',
   cardSelector: '.card',
   deleteBtnSelector: '.card__del',
+  likeBtnSelector: '.card__like',
   imgSelector: '.card__img'
 }
 

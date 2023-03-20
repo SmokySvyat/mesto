@@ -1,6 +1,7 @@
+import { cardTemplateOptions as options } from "./constants.js";
+
 class Card {
   constructor(element, templateSelector, openPopupImg) {
-    console.log(templateSelector)
     this._name = element.name;
     this._link = element.link;
     this._templateSelector = templateSelector;
@@ -9,7 +10,6 @@ class Card {
 
   _getTemplate() {
     const cardTemplate = document.getElementById(this._templateSelector).content;
-    console.log(cardTemplate)
     const listItem = cardTemplate.querySelector('.card').cloneNode(true);
     return listItem;
   };
@@ -26,12 +26,12 @@ class Card {
   generateCard() {
     this._listItem = this._getTemplate();
     const deleteBtn = this._listItem.querySelector('.card__del');
-    const likeBtn = this._listItem.querySelector('#like');
+    const likeBtn = this._listItem.querySelector('.card__like');
     const img = this._listItem.querySelector('.card__img');
     const name = this._name;
     const link = this._link;
   
-    this._listItem.querySelector('#place-name').textContent = name;
+    this._listItem.querySelector('.card__text').textContent = name;
     img.src = link;
     img.alt = name;
     

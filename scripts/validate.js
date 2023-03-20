@@ -35,6 +35,18 @@ const toggleInputState = (inputElement, options) => {
   setInputState(inputElement, isValid, options)
 };
 
+const toggleBtnState = (inputs, submitElement, inactiveButtonClass) => {
+  const isFormValid = inputs.every((inputElement) => {
+    return inputElement.validity.valid;
+  });
+
+  if (isFormValid) {
+    setButtonActive (submitElement, inactiveButtonClass);
+  } else {
+    setButtonInactive (submitElement, inactiveButtonClass);
+  }
+}
+
 const setEventListeners = (form, options) => {
   const submitElement = form.querySelector(options.submitButtonSelector);
   const inputs = Array.from(form.querySelectorAll(options.inputSelector));
@@ -45,19 +57,6 @@ const setEventListeners = (form, options) => {
       toggleBtnState(inputs, submitElement, options.inactiveButtonClass);
     });
 })
-
-  
-  const toggleBtnState = (inputs, submitElement, inactiveButtonClass) => {
-    const isFormValid = inputs.every((inputElement) => {
-      return inputElement.validity.valid;
-    });
-
-    if (isFormValid) {
-      setButtonActive (submitElement, inactiveButtonClass);
-    } else {
-      setButtonInactive (submitElement, inactiveButtonClass);
-    }
-  }
 
   toggleBtnState(inputs, submitElement)
 }

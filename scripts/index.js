@@ -1,8 +1,9 @@
 import {initialCards, validationOptions, cardTemplateOptions} from './constants.js'
 import Card from './Card.js'
-import {enableValidation, setButtonInactive} from './validate.js';
+import FromValidator from './FormValidator.js';
 
 const cardsBlock = document.querySelector('.cards');
+const forms = document.querySelectorAll('.popup-form');
 const popupEdit = document.querySelector('#popup-edit');
 const popupAdd = document.querySelector('#popup-add');
 const popupImg = document.querySelector('#popup-img');
@@ -49,10 +50,15 @@ function addCard(evt) {
   });
   
   formAdd.reset();
-  setButtonInactive(submitAddBtn, validationOptions.inactiveButtonClass);
+  FromValidator.setButtonInactive(submitAddBtn, validationOptions.inactiveButtonClass);
 
   closePopup(popupAdd);
 };
+
+/////////////////////////////////////////////////////////////////////
+// const val = new FromValidator(validationOptions, formAdd)
+// val.show()
+/////////////////////////////////////////////////////////////////////
 
 
 //Delete
@@ -73,7 +79,6 @@ function addCard(evt) {
 
 //Render cards
 const renderCard = (element) => {
-  console.log(cardTemplateOptions.templateSelector)
   const createCard =  new Card(element, cardTemplateOptions.templateSelector, openPopupImg)
   cardsBlock.prepend(createCard.generateCard(element));
 };
@@ -143,6 +148,12 @@ const handleKey = (event) => {
 //Begining
 initialCards.forEach(renderCard);
 
+forms.forEach((form) => {
+  console.log(form.closest('.popup'))
+  const validator = new FromValidator(validationOptions, form)
+  validator.enableValidation()
+});
+
 editBtn.addEventListener('click', () => {
   nameValue.value = userName.textContent;
   jobValue.value = userJob.textContent;
@@ -166,4 +177,3 @@ overlays.forEach((overlay) => {
 addBtn.addEventListener('click', () => {openPopup(popupAdd)});
 popupEdit.addEventListener('submit', handleFormSubmitEdit);
 popupAdd.addEventListener('submit', addCard);
-enableValidation(validationOptions);
