@@ -1,7 +1,7 @@
 class FromValidator {
     constructor(validationOptions, form) {
         this._form = form;
-        this._validationOptions = validationOptions;
+        this._options = validationOptions;
     };
 
     _showError (errorElement, inputElement, options) {
@@ -70,7 +70,7 @@ class FromValidator {
     enableValidation() {
         const form = this._form;
     
-        this._setEventListeners(form, this._validationOptions);
+        this._setEventListeners(form, this._options);
     };
 }
 
