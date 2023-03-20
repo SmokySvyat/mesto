@@ -1,5 +1,6 @@
 import {initialCards, validationOptions, cardTemplateOptions} from './constants.js'
 import Card from './Card.js'
+import {enableValidation, setButtonInactive} from './validate.js';
 
 const cardsBlock = document.querySelector('.cards');
 const popupEdit = document.querySelector('#popup-edit');
