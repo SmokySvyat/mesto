@@ -55,54 +55,12 @@ function addCard(evt) {
   closePopup(popupAdd);
 };
 
-/////////////////////////////////////////////////////////////////////
-// const val = new FromValidator(validationOptions, formAdd)
-// val.show()
-/////////////////////////////////////////////////////////////////////
-
-
-//Delete
-// const handleDeleteCard = (event) => {
-//   event.target.closest('.card').remove();
-// };
-
-
-//Like
-// const handleLikeCard = (event) => {
-//   const eventTarget = event.target;
-//   eventTarget.classList.toggle('card__like_active');
-// };
-
-
-
-
 
 //Render cards
 const renderCard = (element) => {
   const createCard =  new Card(element, cardTemplateOptions.templateSelector, openPopupImg)
   cardsBlock.prepend(createCard.generateCard(element));
 };
-
-// function generateCard(element) {
-//   const listItem = cardTemplate.querySelector('.card').cloneNode(true);
-//   const deleteBtn = listItem.querySelector('.card__del');
-//   const likeBtn = listItem.querySelector('#like');
-//   const img = listItem.querySelector('.card__img');
-//   const name = element.name;
-//   const link = element.link;
-
-//   listItem.querySelector('#place-name').textContent = name;
-//   img.src = link;
-//   img.alt = name;
-  
-//   deleteBtn.addEventListener('click', handleDeleteCard);
-
-//   likeBtn.addEventListener('click', handleLikeCard);
-
-//   img.addEventListener('click', openPopupImg);
-
-//   return listItem;
-// };
 
 
 //Img popup
