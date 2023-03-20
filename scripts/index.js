@@ -1,3 +1,6 @@
+import {initialCards, validationOptions, cardTemplateOptions} from './constants.js'
+import Card from './Card.js'
+
 const cardsBlock = document.querySelector('.cards');
 const popupEdit = document.querySelector('#popup-edit');
 const popupAdd = document.querySelector('#popup-add');
@@ -17,11 +20,9 @@ const userJob = document.querySelector('.profile__job');
 const nameValue = document.querySelector('#name');
 const jobValue = document.querySelector('#job');
 
-const cardTemplate = document.getElementById('card-template').content;
 const formAdd = popupAdd.querySelector('.popup-form');
 const placeValue = popupAdd.querySelector('#place');
 const placeLinkValue = popupAdd.querySelector('#place-link');
-const addedCards = [];
 
 
 //Edit
@@ -54,43 +55,48 @@ function addCard(evt) {
 
 
 //Delete
-const handleDeleteCard = (event) => {
-  event.target.closest('.card').remove();
-};
+// const handleDeleteCard = (event) => {
+//   event.target.closest('.card').remove();
+// };
 
 
 //Like
-const handleLikeCard = (event) => {
-  const eventTarget = event.target;
-  eventTarget.classList.toggle('card__like_active');
-};
+// const handleLikeCard = (event) => {
+//   const eventTarget = event.target;
+//   eventTarget.classList.toggle('card__like_active');
+// };
+
+
+
 
 
 //Render cards
 const renderCard = (element) => {
-  cardsBlock.prepend(generateCard(element));
+  console.log(cardTemplateOptions.templateSelector)
+  const createCard =  new Card(element, cardTemplateOptions.templateSelector, openPopupImg)
+  cardsBlock.prepend(createCard.generateCard(element));
 };
 
-function generateCard(element) {
-  const listItem = cardTemplate.querySelector('.card').cloneNode(true);
-  const deleteBtn = listItem.querySelector('.card__del');
-  const likeBtn = listItem.querySelector('#like');
-  const img = listItem.querySelector('.card__img');
-  const name = element.name;
-  const link = element.link;
+// function generateCard(element) {
+//   const listItem = cardTemplate.querySelector('.card').cloneNode(true);
+//   const deleteBtn = listItem.querySelector('.card__del');
+//   const likeBtn = listItem.querySelector('#like');
+//   const img = listItem.querySelector('.card__img');
+//   const name = element.name;
+//   const link = element.link;
 
-  listItem.querySelector('#place-name').textContent = name;
-  img.src = link;
-  img.alt = name;
+//   listItem.querySelector('#place-name').textContent = name;
+//   img.src = link;
+//   img.alt = name;
   
-  deleteBtn.addEventListener('click', handleDeleteCard);
+//   deleteBtn.addEventListener('click', handleDeleteCard);
 
-  likeBtn.addEventListener('click', handleLikeCard);
+//   likeBtn.addEventListener('click', handleLikeCard);
 
-  img.addEventListener('click', openPopupImg);
+//   img.addEventListener('click', openPopupImg);
 
-  return listItem;
-};
+//   return listItem;
+// };
 
 
 //Img popup
@@ -151,8 +157,8 @@ closeBtns.forEach((button) => {
 overlays.forEach((overlay) => {
   overlay.addEventListener('click', (evt) => {
     if (evt.target === overlay) {
-    closePopup(overlay); // По поводу "поехали отступы" не понял совершенно. Будьте добры, прикрепите скриншот, на следующей итерации.
-    };                   // Если речь идёт о крестике, то я видел изменения в макете к 6му спринту, но в задании уточнения небыло и я не стал переделывать.
+    closePopup(overlay);
+    };
   });
 });
 

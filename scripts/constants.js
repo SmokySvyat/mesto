@@ -35,3 +35,12 @@ const validationOptions = {
   errorText: '.popup__error',
   errorClosestParent: '.popup-form__input-section'
 };
+
+const cardTemplateOptions = {
+  templateSelector: 'card-template',
+  cardSelector: '.card',
+  deleteBtnSelector: '.card__del',
+  imgSelector: '.card__img'
+}
+
+export {initialCards, validationOptions, cardTemplateOptions}
