@@ -8,14 +8,21 @@ class Card {
     this._openPopupImg = openPopupImg;
   }
 
+  getText(event) {
+    const imgLink = event.target.getAttribute('src'); 
+    const imgHeading = event.target.getAttribute('alt');
+    return console.log(imgHeading, imgLink)
+  }
+
   _getTemplate() {
     const cardTemplate = document.getElementById(this._templateSelector).content;
     const listItem = cardTemplate.querySelector(options.cardSelector).cloneNode(true);
     return listItem;
   };
 
-  _handleDeleteCard = (event) => {
-    event.target.closest(options.cardSelector).remove();
+  _handleDeleteCard = () => {
+    console.log(this._name)
+    this._listItem.remove();
   };
   
   _handleLikeCard = (event) => {
@@ -28,12 +35,10 @@ class Card {
     const deleteBtn = this._listItem.querySelector(options.deleteBtnSelector);
     const likeBtn = this._listItem.querySelector(options.likeBtnSelector);
     const img = this._listItem.querySelector(options.imgSelector);
-    const name = this._name;
-    const link = this._link;
   
-    this._listItem.querySelector(options.cardHeadingSelector).textContent = name;
-    img.src = link;
-    img.alt = name;
+    this._listItem.querySelector(options.cardHeadingSelector).textContent = this._name;
+    img.src = this._link;
+    img.alt = this._name;
     
     deleteBtn.addEventListener('click', this._handleDeleteCard);
   

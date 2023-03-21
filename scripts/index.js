@@ -3,18 +3,17 @@ import Card from './Card.js'
 import FromValidator from './FormValidator.js';
 
 const cardsBlock = document.querySelector('.cards');
-const forms = document.querySelectorAll('.popup-form');
-const popupEdit = document.querySelector('#popup-edit');
-const popupAdd = document.querySelector('#popup-add');
+// const forms = document.querySelectorAll('.popup-form');
 const popupImg = document.querySelector('#popup-img');
 const imageIntoPopup = popupImg.querySelector('.popup__image');
 const imageIntoPopupHeading = popupImg.querySelector('.popup__heading');
 const overlays = Array.from(document.querySelectorAll('.popup'));
+const closeBtns = document.querySelectorAll('.popup__close');
 
 const editBtn = document.querySelector('.profile__edit');
-const addBtn = document.querySelector('.profile__add')
-const closeBtns = document.querySelectorAll('.popup__close');
-const submitAddBtn = popupAdd.querySelector('.popup-form__btn');
+const popupEdit = document.querySelector('#popup-edit');
+const formEdit = popupEdit.querySelector('.popup-form');
+const submitEditBtn = popupEdit.querySelector('.popup-form__btn');
 
 const userName = document.querySelector('.profile__name');
 const userJob = document.querySelector('.profile__job');
@@ -22,7 +21,10 @@ const userJob = document.querySelector('.profile__job');
 const nameValue = document.querySelector('#name');
 const jobValue = document.querySelector('#job');
 
+const addBtn = document.querySelector('.profile__add');
+const popupAdd = document.querySelector('#popup-add');
 const formAdd = popupAdd.querySelector('.popup-form');
+const submitAddBtn = popupAdd.querySelector('.popup-form__btn');
 const placeValue = popupAdd.querySelector('#place');
 const placeLinkValue = popupAdd.querySelector('#place-link');
 
@@ -50,7 +52,7 @@ function addCard(evt) {
   });
   
   formAdd.reset();
-  FromValidator.setButtonInactive(submitAddBtn, validationOptions.inactiveButtonClass);
+  validatorAddForm.setButtonInactive(submitAddBtn);
 
   closePopup(popupAdd);
 };
@@ -66,7 +68,7 @@ const renderCard = (element) => {
 //Img popup
 const openPopupImg = (event) => {
   const imgLink = event.target.getAttribute('src'); 
-  const imgHeading = event.target.getAttribute('alt')
+  const imgHeading = event.target.getAttribute('alt');
 
   imageIntoPopup.setAttribute('src', imgLink);
   imageIntoPopup.setAttribute('alt', imgHeading);
@@ -106,11 +108,11 @@ const handleKey = (event) => {
 //Begining
 initialCards.forEach(renderCard);
 
-forms.forEach((form) => {
-  console.log(form.closest('.popup'))
-  const validator = new FromValidator(validationOptions, form)
-  validator.enableValidation()
-});
+const validatorAddForm = new FromValidator(validationOptions, formAdd, submitAddBtn);
+validatorAddForm.enableValidation();
+
+const validatorEditForm = new FromValidator(validationOptions, formEdit, submitEditBtn);
+validatorEditForm.enableValidation();
 
 editBtn.addEventListener('click', () => {
   nameValue.value = userName.textContent;
