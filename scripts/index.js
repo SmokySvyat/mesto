@@ -3,14 +3,12 @@ import Card from './Card.js'
 import FromValidator from './FormValidator.js';
 
 const cardsBlock = document.querySelector('.cards');
-// const forms = document.querySelectorAll('.popup-form');
-const popupImg = document.querySelector('#popup-img');
-const imageIntoPopup = popupImg.querySelector('.popup__image');
-const imageIntoPopupHeading = popupImg.querySelector('.popup__heading');
 const overlays = Array.from(document.querySelectorAll('.popup'));
-const closeBtns = document.querySelectorAll('.popup__close');
 
 const editBtn = document.querySelector('.profile__edit');
+const addBtn = document.querySelector('.profile__add');
+const closeBtns = document.querySelectorAll('.popup__close');
+
 const popupEdit = document.querySelector('#popup-edit');
 const formEdit = popupEdit.querySelector('.popup-form');
 const submitEditBtn = popupEdit.querySelector('.popup-form__btn');
@@ -21,7 +19,6 @@ const userJob = document.querySelector('.profile__job');
 const nameValue = document.querySelector('#name');
 const jobValue = document.querySelector('#job');
 
-const addBtn = document.querySelector('.profile__add');
 const popupAdd = document.querySelector('#popup-add');
 const formAdd = popupAdd.querySelector('.popup-form');
 const submitAddBtn = popupAdd.querySelector('.popup-form__btn');
@@ -60,21 +57,8 @@ function addCard(evt) {
 
 //Render cards
 const renderCard = (element) => {
-  const createCard =  new Card(element, cardTemplateOptions.templateSelector, openPopupImg)
+  const createCard =  new Card(element, cardTemplateOptions.templateSelector, openPopup)
   cardsBlock.prepend(createCard.generateCard(element));
-};
-
-
-//Img popup
-const openPopupImg = (event) => {
-  const imgLink = event.target.getAttribute('src'); 
-  const imgHeading = event.target.getAttribute('alt');
-
-  imageIntoPopup.setAttribute('src', imgLink);
-  imageIntoPopup.setAttribute('alt', imgHeading);
-  imageIntoPopupHeading.textContent = imgHeading;
-
-  openPopup(popupImg);
 };
 
 

@@ -1,18 +1,25 @@
 import { cardTemplateOptions as options } from "./constants.js";
 
 class Card {
-  constructor(element, templateSelector, openPopupImg) {
+  constructor(element, templateSelector, openPopup) {
     this._name = element.name;
     this._link = element.link;
     this._templateSelector = templateSelector;
-    this._openPopupImg = openPopupImg;
-  }
+    this._openPopup = openPopup;
+  };
 
-  getText(event) {
-    const imgLink = event.target.getAttribute('src'); 
-    const imgHeading = event.target.getAttribute('alt');
-    return console.log(imgHeading, imgLink)
-  }
+  _openPopupImg = () => {
+    const popupImg = document.querySelector('#popup-img');
+    const imageIntoPopup = popupImg.querySelector('.popup__image');
+    const imageIntoPopupHeading = popupImg.querySelector('.popup__heading');
+  
+    imageIntoPopup.setAttribute('src', this._link);
+    imageIntoPopup.setAttribute('alt', this._name);
+    imageIntoPopupHeading.textContent = this._name;
+  
+    this._openPopup(popupImg);
+  };
+  
 
   _getTemplate() {
     const cardTemplate = document.getElementById(this._templateSelector).content;
@@ -21,7 +28,6 @@ class Card {
   };
 
   _handleDeleteCard = () => {
-    console.log(this._name)
     this._listItem.remove();
   };
   
