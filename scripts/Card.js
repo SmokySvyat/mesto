@@ -1,4 +1,4 @@
-import { cardTemplateOptions as options } from "./constants.js";
+import { cardTemplateOptions as options, popupImg, imageIntoPopup, imageIntoPopupHeading } from "./constants.js";
 
 class Card {
   constructor(element, templateSelector, openPopup) {
@@ -9,10 +9,6 @@ class Card {
   };
 
   _openPopupImg = () => {
-    const popupImg = document.querySelector('#popup-img');
-    const imageIntoPopup = popupImg.querySelector('.popup__image');
-    const imageIntoPopupHeading = popupImg.querySelector('.popup__heading');
-  
     imageIntoPopup.setAttribute('src', this._link);
     imageIntoPopup.setAttribute('alt', this._name);
     imageIntoPopupHeading.textContent = this._name;

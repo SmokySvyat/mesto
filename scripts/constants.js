@@ -44,6 +44,10 @@ const cardTemplateOptions = {
   likeBtnSelector: '.card__like',
   imgSelector: '.card__img',
   likeBtnClass: 'card__like_active'
-}
+};
 
-export {initialCards, validationOptions, cardTemplateOptions}
+const popupImg = document.querySelector('#popup-img');
+const imageIntoPopup = popupImg.querySelector('.popup__image');
+const imageIntoPopupHeading = popupImg.querySelector('.popup__heading');  
+
+export {initialCards, validationOptions, cardTemplateOptions, popupImg, imageIntoPopup, imageIntoPopupHeading}
