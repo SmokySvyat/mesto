@@ -37,6 +37,7 @@ const validationOptions = {
 };
 
 const cardTemplateOptions = {
+  containerSelector: '.cards',
   templateSelector: 'card-template',
   cardSelector: '.card',
   cardHeadingSelector: '.card__text',

@@ -1,20 +1,20 @@
-import { cardTemplateOptions as options, popupImg, imageIntoPopup, imageIntoPopupHeading } from "./constants.js";
+import { cardTemplateOptions as options } from "./constants.js";
 
-class Card {
-  constructor(element, templateSelector, openPopup) {
+export default class Card {
+  constructor(element, templateSelector, handleCardClick) {
     this._name = element.name;
     this._link = element.link;
     this._templateSelector = templateSelector;
-    this._openPopup = openPopup;
+    this._handleCardClick = handleCardClick;
   };
 
-  _openPopupImg = () => {
-    imageIntoPopup.setAttribute('src', this._link);
-    imageIntoPopup.setAttribute('alt', this._name);
-    imageIntoPopupHeading.textContent = this._name;
+  // _openPopupImg = () => {
+  //   imageIntoPopup.setAttribute('src', this._link);
+  //   imageIntoPopup.setAttribute('alt', this._name);
+  //   imageIntoPopupHeading.textContent = this._name;
   
-    this._openPopup(popupImg);
-  };
+  //   this._openPopup(popupImg);
+  // };
   
 
   _getTemplate() {
@@ -32,24 +32,26 @@ class Card {
     eventTarget.classList.toggle(options.likeBtnClass);
   };
 
+  _setEventListeners() {
+    this._deleteBtn.addEventListener('click', this._handleDeleteCard);
+  
+    this._likeBtn.addEventListener('click', this._handleLikeCard);
+  
+    this._img.addEventListener('click', this._handleCardClick);
+  }
+  
   generateCard() {
     this._listItem = this._getTemplate();
-    const deleteBtn = this._listItem.querySelector(options.deleteBtnSelector);
-    const likeBtn = this._listItem.querySelector(options.likeBtnSelector);
-    const img = this._listItem.querySelector(options.imgSelector);
-  
-    this._listItem.querySelector(options.cardHeadingSelector).textContent = this._name;
-    img.src = this._link;
-    img.alt = this._name;
+    this._deleteBtn = this._listItem.querySelector(options.deleteBtnSelector);
+    this._likeBtn = this._listItem.querySelector(options.likeBtnSelector);
+    this._img = this._listItem.querySelector(options.imgSelector);
     
-    deleteBtn.addEventListener('click', this._handleDeleteCard);
-  
-    likeBtn.addEventListener('click', this._handleLikeCard);
-  
-    img.addEventListener('click', this._openPopupImg);
-  
+    this._listItem.querySelector(options.cardHeadingSelector).textContent = this._name;
+    this._img.src = this._link;
+    this._img.alt = this._name;
+
+    this._setEventListeners()
+    
     return this._listItem;
   };
 }
-
-export default Card;
