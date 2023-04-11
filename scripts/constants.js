@@ -47,8 +47,4 @@ const cardTemplateOptions = {
   likeBtnClass: 'card__like_active'
 };
 
-const popupImg = document.querySelector('#popup-img');
-const imageIntoPopup = popupImg.querySelector('.popup__image');
-const imageIntoPopupHeading = popupImg.querySelector('.popup__heading');  
-
-export {initialCards, validationOptions, cardTemplateOptions, popupImg, imageIntoPopup, imageIntoPopupHeading}
+export {initialCards, validationOptions, cardTemplateOptions}
