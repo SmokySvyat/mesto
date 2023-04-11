@@ -20,8 +20,8 @@ const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
     },
     {
-      name: 'Байкал',
-      link: 'images/nsk_cat.jpg'
+      name: 'Гошан',
+      link: "https://sun4.userapi.com/sun4-12/s/v1/ig2/IcIoPXVm9zGsySr_dtQAr1o-U6v3pX9QHO-28hz0UdDL8YQ6l3DF162tDlqHfDJcwsONG4J9faOzBpqYPWKa7CQ6.jpg?size=883x1266&quality=95&type=album"
     }
   ];
 

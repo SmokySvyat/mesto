@@ -1,4 +1,4 @@
-import { cardTemplateOptions as options } from "./constants.js";
+import { cardTemplateOptions as options } from "../utils/constants.js";
 
 export default class Card {
   constructor(element, templateSelector, handleCardClick) {

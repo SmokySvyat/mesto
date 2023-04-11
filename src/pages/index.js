@@ -1,10 +1,12 @@
-import {initialCards, validationOptions, cardTemplateOptions} from './constants.js'
-import Card from './Card.js'
-import FromValidator from './FormValidator.js';
-import UserInfo from './UserInfo.js';
-import Section from './Section.js';
-import PicturePopup from './PicturePopup.js'
-import PopupWithForm from './PopupWithForm.js'
+import './index.css';
+
+import {initialCards, validationOptions, cardTemplateOptions} from '../utils/constants.js'
+import Card from '../components/Card.js'
+import FromValidator from '../components/FormValidator.js';
+import UserInfo from '../components/UserInfo.js';
+import Section from '../components/Section.js';
+import PicturePopup from '../components/PicturePopup.js'
+import PopupWithForm from '../components/PopupWithForm.js'
 
 const editBtn = document.querySelector('.profile__edit');
 const addBtn = document.querySelector('.profile__add');
