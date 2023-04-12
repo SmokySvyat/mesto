@@ -6,19 +6,10 @@ export default class Card {
     this._link = element.link;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
-  };
-
-  // _openPopupImg = () => {
-  //   imageIntoPopup.setAttribute('src', this._link);
-  //   imageIntoPopup.setAttribute('alt', this._name);
-  //   imageIntoPopupHeading.textContent = this._name;
-  
-  //   this._openPopup(popupImg);
-  // };
-  
+  };  
 
   _getTemplate() {
-    const cardTemplate = document.getElementById(this._templateSelector).content;
+    const cardTemplate = document.querySelector(`#${this._templateSelector}`).content;
     const listItem = cardTemplate.querySelector(options.cardSelector).cloneNode(true);
     return listItem;
   };
@@ -42,6 +33,7 @@ export default class Card {
   
   generateCard() {
     this._listItem = this._getTemplate();
+    
     this._deleteBtn = this._listItem.querySelector(options.deleteBtnSelector);
     this._likeBtn = this._listItem.querySelector(options.likeBtnSelector);
     this._img = this._listItem.querySelector(options.imgSelector);

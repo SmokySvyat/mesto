@@ -3,6 +3,7 @@ class FromValidator {
         this._form = form;
         this._options = validationOptions;
         this._submitElement = submitElement;
+        this._inputs = Array.from(this._form.querySelectorAll(this._options.inputSelector));
     };
 
     _showError (errorElement, inputElement) {
@@ -42,8 +43,8 @@ class FromValidator {
         this._setInputState(inputElement, isValid);
     };
 
-    _toggleBtnState = (inputs) => {
-        const isFormValid = inputs.every((inputElement) => {
+    _toggleBtnState = () => {
+        const isFormValid = this._inputs.every((inputElement) => {
           return inputElement.validity.valid;
         });
     
@@ -54,17 +55,15 @@ class FromValidator {
         }
       }
 
-    _setEventListeners = (form) => {
-        const inputs = Array.from(form.querySelectorAll(this._options.inputSelector));
-      
-        inputs.forEach(inputElement => {
+    _setEventListeners = () => {      
+        this._inputs.forEach(inputElement => {
           inputElement.addEventListener('input', () => {
             this._toggleInputState(inputElement);
-            this._toggleBtnState(inputs);
+            this._toggleBtnState();
           });
       })
       
-        this._toggleBtnState(inputs)
+        this._toggleBtnState(this._inputs)
     }
 
     enableValidation() {

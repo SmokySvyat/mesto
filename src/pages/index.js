@@ -8,18 +8,16 @@ import Section from '../components/Section.js';
 import PicturePopup from '../components/PicturePopup.js'
 import PopupWithForm from '../components/PopupWithForm.js'
 
-const editBtn = document.querySelector('.profile__edit');
-const addBtn = document.querySelector('.profile__add');
+const buttonEditProfile = document.querySelector('.profile__edit');
+const buttonAdd = document.querySelector('.profile__add');
 
 const popupEdit = document.querySelector('#popup-edit');
 const formEdit = popupEdit.querySelector('.popup-form');
-const submitEditBtn = popupEdit.querySelector('.popup-form__btn');
+const buttonEditSubmit = popupEdit.querySelector('.popup-form__btn');
 
 const popupAdd = document.querySelector('#popup-add');
 const formAdd = popupAdd.querySelector('.popup-form');
-const submitAddBtn = popupAdd.querySelector('.popup-form__btn');
-const placeValue = popupAdd.querySelector('#place');
-const placeLinkValue = popupAdd.querySelector('#place-link');
+const buttonAddSubmit = popupAdd.querySelector('.popup-form__btn');
 
 const userInfo = new UserInfo ({
   profileNameSelector: '.profile__name',
@@ -45,12 +43,12 @@ const popupProfile = new PopupWithForm(
 
 const popupAddCard = new PopupWithForm(
   '#popup-add',
-  {submitCallback: () => {
+  {submitCallback: (values) => {
     cardSection.addItem(renderCard({
-      name: placeValue.value,
-      link: placeLinkValue.value
+      name: values.place,
+      link: values.link
     }));
-      validatorAddForm.setButtonInactive(submitAddBtn);
+      validatorAddForm.setButtonInactive(buttonAddSubmit);
       popupAddCard.close()
     }
   }
@@ -73,11 +71,11 @@ const popupImage = new PicturePopup('.popup-image');
 //Begining
 cardSection.render();
 
-addBtn.addEventListener('click', () => {
+buttonAdd.addEventListener('click', () => {
   popupAddCard.open()
 });
 
-editBtn.addEventListener('click', () => {
+buttonEditProfile.addEventListener('click', () => {
   popupProfile.fillInputs(userInfo.getUserInfo())
   popupProfile.open();
 });
@@ -86,7 +84,7 @@ popupAddCard.setEventListeners();
 popupProfile.setEventListeners();
 popupImage.setEventListeners();
 
-const validatorAddForm = new FromValidator(validationOptions, formAdd, submitAddBtn);
+const validatorAddForm = new FromValidator(validationOptions, formAdd, buttonAddSubmit);
 validatorAddForm.enableValidation();
-const validatorEditForm = new FromValidator(validationOptions, formEdit, submitEditBtn);
+const validatorEditForm = new FromValidator(validationOptions, formEdit, buttonEditSubmit);
 validatorEditForm.enableValidation();

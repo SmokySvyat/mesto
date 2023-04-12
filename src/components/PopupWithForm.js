@@ -11,8 +11,7 @@ export default class PopupWithForm extends Popup {
 
     _getInputValue() {
         this._inputsList.forEach((input) => {
-            const inputName = input['name'];
-            this._inputsValues[inputName] = input.value;
+            this._inputsValues[input.name] = input.value;
         });
 
         return this._inputsValues
@@ -33,7 +32,7 @@ export default class PopupWithForm extends Popup {
 
     fillInputs(userData) {
         this._inputsList.forEach((input) => {
-            input.value = userData[input.name];
+            input.value = userData[input.name] ?? '';
         });
       }
 }
