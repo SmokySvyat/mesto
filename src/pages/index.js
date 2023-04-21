@@ -50,9 +50,14 @@ const cardSection = new Section ({
 const popupProfile = new PopupWithForm(
   '#popup-edit',
   {submitCallback: (values) => {
-    api.patchProfile(values);
-    userInfo.setUserInfo(values);
+    popupProfile.renderLoading(true, 'Сохранение...')
+    api.patchProfile(values)
+    .then((result) => {
+    userInfo.setUserInfo(result);
     popupProfile.close();
+    })
+    .catch(err => console.log(err))
+    .finally(popupProfile.renderLoading(false))
   }
 });
 
@@ -60,7 +65,7 @@ const popupAddCard = new PopupWithForm(
   '#popup-add',
   {submitCallback: (values) => {
     console.log(values)
-    popupAddCard.renderLoading(true, 'Сохранение')
+    popupAddCard.renderLoading(true, 'Сохранение...')
     api.postCard({
       name: values.place,
       link: values.link,
@@ -86,7 +91,18 @@ const popupImage = new PicturePopup('.popup-image');
 const popupChangeAvatar = new PopupWithForm(
   '#popup-change-avatar',
   {submitCallback: (values) => {
-    popupChangeAvatar.close()
+    popupChangeAvatar.renderLoading(true, 'Сохранение...');
+    api.setUserAvatar(values)
+    .then(console.log(values))
+    .then(res => {
+      console.log(res)
+      userInfo.setUserInfo(res);
+      popupChangeAvatar.close()
+    })
+    .catch(err => console.log(err))
+    .finally(() => {
+      popupChangeAvatar.renderLoading(false)
+    })
   }}
 );
 

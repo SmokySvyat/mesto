@@ -21,11 +21,6 @@ export default class UserInfo {
       this._profileName.textContent = name;
       this._profileAbout.textContent = about;
       this._id = _id;
-      console.log(`setUser ${this._id}`)
-      this.setAvatar(avatar);
-    };
-
-    setAvatar(avatar) {
       this._profileAvatar.src = avatar;
     };
 }

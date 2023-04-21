@@ -32,6 +32,19 @@ export default class Api {
       })
       .then(res => this._isResultOk(res))
     };
+
+    setUserAvatar(avatar) {
+      return fetch(`${this._baseUrl}/users/me/avatar`, {
+        method: 'PATCH',
+        headers: {
+          authorization: this._authorization,
+          // 'content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          avatar: avatar
+        })
+      })
+    }
   
     getCard() {
       return fetch(`${this._baseUrl}cards`, {
