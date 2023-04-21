@@ -1,11 +1,19 @@
 import { cardTemplateOptions as options } from "../utils/constants.js";
 
 export default class Card {
-  constructor(element, templateSelector, handleCardClick) {
+  constructor(element, templateSelector, {userId, handleCardClick, confirmDelete, handleLikeCard}) {
     this._name = element.name;
     this._link = element.link;
+    this._ownerId = element.owner;
+    this.cardId = element._id;
+    this.likes = element.likes;
+    this.likesCounter = element.likes.length;
+    this._userId = userId
+
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
+    this._confirmDelete = confirmDelete;
+    this._handleLikeCard = handleLikeCard;
   };  
 
   _getTemplate() {
@@ -17,18 +25,29 @@ export default class Card {
   _handleDeleteCard = () => {
     this._listItem.remove();
   };
+
+  isLiked(likes) {
+    return likes.some(like => {
+      return like._id === this._userId;
+    })
+  }
   
-  _handleLikeCard = (event) => {
-    const eventTarget = event.target;
-    eventTarget.classList.toggle(options.likeBtnClass);
+  like = ({likes}) => {
+    // console.log(likes)
+    this._likeBtn.classList.toggle(options.likeBtnClass);
+    this._counter.textContent = likes.length;
   };
 
   _setEventListeners() {
-    this._deleteBtn.addEventListener('click', this._handleDeleteCard);
+    if (this._isOwner) {
+      this._deleteBtn.addEventListener('click', this._confirmDelete);
+    }
   
     this._likeBtn.addEventListener('click', this._handleLikeCard);
   
     this._img.addEventListener('click', this._handleCardClick);
+    // console.log(this._ownerId)
+    // console.log(this._likeCounter)
   }
   
   generateCard() {
@@ -37,10 +56,24 @@ export default class Card {
     this._deleteBtn = this._listItem.querySelector(options.deleteBtnSelector);
     this._likeBtn = this._listItem.querySelector(options.likeBtnSelector);
     this._img = this._listItem.querySelector(options.imgSelector);
+    this._counter = this._listItem.querySelector(options.counterSelector)
     
     this._listItem.querySelector(options.cardHeadingSelector).textContent = this._name;
     this._img.src = this._link;
     this._img.alt = this._name;
+    this._counter.textContent = this.likesCounter;
+
+
+    if (this._ownerId !== this._userId) {
+      this._deleteBtn.remove()
+    }
+
+    if (this.isLiked(this.likes)) {
+      this._likeBtn.classList.add('card__like_active')
+    }
+    // console.log(this._counter)
+    // console.log(options.counterSelector)
+    // console.log(this._ownerId)
 
     this._setEventListeners()
     

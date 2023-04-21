@@ -1,31 +1,4 @@
-const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Гошан',
-      link: "https://sun4.userapi.com/sun4-12/s/v1/ig2/IcIoPXVm9zGsySr_dtQAr1o-U6v3pX9QHO-28hz0UdDL8YQ6l3DF162tDlqHfDJcwsONG4J9faOzBpqYPWKa7CQ6.jpg?size=883x1266&quality=95&type=album"
-    }
-  ];
-
-const validationOptions = {
+export const validationOptions = {
   formSelector: '.popup-form',
   inputSelector: '.popup-form__input',
   submitButtonSelector: '.popup-form__btn',
@@ -36,7 +9,7 @@ const validationOptions = {
   errorClosestParent: '.popup-form__input-section'
 };
 
-const cardTemplateOptions = {
+export const cardTemplateOptions = {
   containerSelector: '.cards',
   templateSelector: 'card-template',
   cardSelector: '.card',
@@ -44,7 +17,15 @@ const cardTemplateOptions = {
   deleteBtnSelector: '.card__del',
   likeBtnSelector: '.card__like',
   imgSelector: '.card__img',
-  likeBtnClass: 'card__like_active'
+  likeBtnClass: 'card__like_active',
+  counterSelector: '.card__like-counter'
 };
 
-export {initialCards, validationOptions, cardTemplateOptions}
+export const profileSelectors = {
+  avatarSelector: '.profile__avatar',
+  nameSelector: '.profile__name',
+  aboutSelector: '.profile__job',
+  buttonEditSelector: '.profile__edit',
+  buttonAvatarSelector: '.profile__avatar-overlay',
+  buttonAddSelector: '.profile__add'
+};
