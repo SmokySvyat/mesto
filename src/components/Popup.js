@@ -21,10 +21,7 @@ export default class Popup {
         if (!this._buttonSubmit) return;
         if (isLoading) {
             this.defaultText = this._buttonSubmit.value;
-            console.log(loadingText)
-            console.log(this._buttonSubmit.value)
             this._buttonSubmit.value = loadingText;
-            console.log(this._buttonSubmit.value)
         } else {
           this._buttonSubmit.value = this.defaultText;
         }

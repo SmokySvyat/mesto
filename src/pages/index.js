@@ -51,37 +51,36 @@ const popupProfile = new PopupWithForm(
   '#popup-edit',
   {submitCallback: (values) => {
     popupProfile.renderLoading(true, 'Сохранение...')
+    
     api.patchProfile(values)
-    .then((result) => {
-    userInfo.setUserInfo(result);
-    popupProfile.close();
-    })
-    .catch(err => console.log(err))
-    .finally(popupProfile.renderLoading(false))
+      .then((result) => {
+      userInfo.setUserInfo(result);
+      popupProfile.close();
+      })
+      .catch(err => console.log(err))
+      .finally(popupProfile.renderLoading(false))
   }
 });
 
 const popupAddCard = new PopupWithForm(
   '#popup-add',
   {submitCallback: (values) => {
-    console.log(values)
     popupAddCard.renderLoading(true, 'Сохранение...')
+    
     api.postCard({
       name: values.place,
       link: values.link,
       likes: [0]
     })
-    .then((newCard) => {
-      newCard.json()
-      console.log(newCard)
-        cardSection.addItem(renderCard(newCard));
-        validatorAddForm.setButtonInactive(buttonAddSubmit);
-        popupAddCard.close()
-      })
-      .catch(err => console.log(err))
-      .finally(() => {
-        popupAddCard.renderLoading(false);
-      });
+      .then((newCard) => {
+          cardSection.addItem(renderCard(newCard));
+          validatorAddForm.setButtonInactive(buttonAddSubmit);
+          popupAddCard.close()
+        })
+        .catch(err => console.log(err))
+        .finally(() => {
+          popupAddCard.renderLoading(false);
+        });
     }
   }
 );
@@ -92,45 +91,56 @@ const popupChangeAvatar = new PopupWithForm(
   '#popup-change-avatar',
   {submitCallback: (values) => {
     popupChangeAvatar.renderLoading(true, 'Сохранение...');
+    
     api.setUserAvatar(values)
-    .then(console.log(values))
-    .then(res => {
-      console.log(res)
-      userInfo.setUserInfo(res);
-      popupChangeAvatar.close()
-    })
-    .catch(err => console.log(err))
-    .finally(() => {
-      popupChangeAvatar.renderLoading(false)
-    })
+      .then((res) => {
+        userInfo.setUserInfo(res);
+        popupChangeAvatar.close()
+      })
+      .catch(err => console.log(err))
+      .finally(() => {
+        popupChangeAvatar.renderLoading(false)
+      })
   }}
 );
 
 const popupConfirmDelete = new PopupWithConfirm(
   '#popup-confirm-delete',
-  {submitCallback: (values) => {
-    popupConfirmDelete.close()
+  {submitCallback: ({card}) => {
+    console.log(card)
+    console.log(card.cardId)
+    debugger
+    popupConfirmDelete.renderLoading(true, 'Удаление...');
+    
+    api.deleteCard(card)
+      .then(() => {
+        card.deleteCard();
+        popupConfirmDelete.close();
+      })
+      .catch(err => console.log(err))
+      .finally(popupConfirmDelete.renderLoading(false))
   }}
 );
 
 
 //Render
 const renderCard = (element) => {
-  // console.log(element._id)
   const createCard =  new Card(
     element,
     cardTemplateOptions.templateSelector,
     {
     userId: userCurrentId,
     handleCardClick: () => {popupImage.open(element)},
-    ConfirmDelete: () => {popupConfirmDelete.open()},
+    
+    confirmDelete: () => {
+      popupConfirmDelete.open(createCard)},
+
     handleLikeCard: () => {
       api.like(createCard.cardId, createCard.isLiked(createCard.likes))
       .then(res => {
         createCard.like(res)
       })
-      .catch(err => console.log(err))
-    }
+      .catch(err => console.log(err))}
     }
     );
     

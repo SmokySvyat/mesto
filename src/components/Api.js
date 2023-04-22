@@ -33,17 +33,18 @@ export default class Api {
       .then(res => this._isResultOk(res))
     };
 
-    setUserAvatar(avatar) {
+    setUserAvatar({link}) {
       return fetch(`${this._baseUrl}/users/me/avatar`, {
         method: 'PATCH',
         headers: {
           authorization: this._authorization,
-          // 'content-type': 'application/json'
+          'content-type': 'application/json'
         },
         body: JSON.stringify({
-          avatar: avatar
+          avatar: link
         })
       })
+      .then(res => this._isResultOk(res))
     }
   
     getCard() {
@@ -65,7 +66,19 @@ export default class Api {
         },
         body: JSON.stringify(data)
       })
+      .then(res => this._isResultOk(res))
     };
+
+    deleteCard({cardId}) {
+      console.log(cardID)
+      return fetch(`${this._baseUrl}cards/${cardId}`, {
+        method: 'DELETE',
+        headers: {
+          authorization: this._authorization,
+        }
+      })
+      .then(res => this._isResultOk(res))
+    }
 
     like(cardId, isLiked) {
         return fetch(`${this._baseUrl}cards/${cardId}/likes`, {
