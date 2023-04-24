@@ -2,7 +2,7 @@
 
 Данный проект был сделать в целях обучения работы с HTML, CSS и JS, в рамках обучения на курсе "Веб-разработчик" на онлайн платформе Яндекс Практикум.
 
-[Ссылка](https://smokysvyat.github.io/mesto/) на *GitHub Pages*.
+[*GitHub Pages*](https://smokysvyat.github.io/mesto/)
 
 ## Функционал и особенности
 
