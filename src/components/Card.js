@@ -39,7 +39,6 @@ export default class Card {
 
   deleteCard(card) {
     this._listItem.remove(card);
-    // debugger
     this._listItem = null;
   }
 

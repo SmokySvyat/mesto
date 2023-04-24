@@ -1,14 +1,14 @@
 export default class Api {
-    constructor(config) {
-      this._baseUrl = config.url;
-      this._authorization = config.authorization;
+    constructor({url, authorization}) {
+      this._baseUrl = url;
+      this._authorization = authorization;
     }
   
     _isResultOk(res) {
       if (res.ok) {
         return res.json()
       }
-      return Promise.reject()
+      return Promise.reject(`Ошибка: ${res.status}`)
     };
   
     getProfile() {
@@ -18,7 +18,7 @@ export default class Api {
           }
         })
           .then(res => res.json())
-          // .then(res => console.log(res))
+          .catch(err => console.log(err))
     };
   
     patchProfile(values) {
@@ -31,6 +31,7 @@ export default class Api {
         body: JSON.stringify(values)
       })
       .then(res => this._isResultOk(res))
+      .catch(err => console.log(err))
     };
 
     setUserAvatar({link}) {
@@ -45,7 +46,8 @@ export default class Api {
         })
       })
       .then(res => this._isResultOk(res))
-    }
+      .catch(err => console.log(err))
+    };
   
     getCard() {
       return fetch(`${this._baseUrl}cards`, {
@@ -54,6 +56,7 @@ export default class Api {
           'content-type': 'application/json'
         }
       }). then(res => this._isResultOk(res))
+      .catch(err => console.log(err))
     };
   
     postCard(data) {
@@ -66,11 +69,10 @@ export default class Api {
         body: JSON.stringify(data)
       })
       .then(res => this._isResultOk(res))
+      .catch(err => console.log(err))
     };
 
     deleteCard(cardId) {
-      console.log(cardId)
-      // debugger
       return fetch(`${this._baseUrl}cards/${cardId}`, {
         method: 'DELETE',
         headers: {
@@ -78,8 +80,7 @@ export default class Api {
         }
       })
       .then(res => this._isResultOk(res))
-      .then(console.log('api ok'))
-      .catch(err => console.log(err `api not ok`))
+      .catch(err => console.log(err))
     }
 
     like(cardId, isLiked) {
@@ -89,6 +90,7 @@ export default class Api {
             authorization: this._authorization
           }
         })
-        .then((res) => this._isResultOk(res));
+        .then((res) => this._isResultOk(res))
+        .catch(err => console.log(err))
       }
   };

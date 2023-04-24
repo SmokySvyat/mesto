@@ -1,6 +1,12 @@
 import './index.css';
 
-import {validationOptions, profileSelectors, cardTemplateOptions} from '../utils/constants.js'
+import {
+  validationOptions, 
+  profileSelectors, 
+  cardTemplateOptions, 
+  popupsSelectors, 
+  formSelectors
+} from '../utils/constants.js'
 import Api from '../components/Api.js'
 import Card from '../components/Card.js'
 import FromValidator from '../components/FormValidator.js';
@@ -14,13 +20,17 @@ const buttonEditProfile = document.querySelector(profileSelectors.buttonEditSele
 const buttonAdd = document.querySelector(profileSelectors.buttonAddSelector);
 const buttonAvatar = document.querySelector(profileSelectors.buttonAvatarSelector);
 
-const popupEdit = document.querySelector('#popup-edit');
-const formEdit = popupEdit.querySelector('.popup-form');
-const buttonEditSubmit = popupEdit.querySelector('.popup-form__btn');
+const popupEdit = document.querySelector(popupsSelectors.editProfile);
+const formEdit = popupEdit.querySelector(formSelectors.form);
+const buttonEditSubmit = popupEdit.querySelector(formSelectors.submit);
 
-const popupAdd = document.querySelector('#popup-add');
-const formAdd = popupAdd.querySelector('.popup-form');
-const buttonAddSubmit = popupAdd.querySelector('.popup-form__btn');
+const popupAdd = document.querySelector(popupsSelectors.addCard);
+const formAdd = popupAdd.querySelector(formSelectors.form);
+const buttonAddSubmit = popupAdd.querySelector(formSelectors.submit);
+
+const popupAvatar = document.querySelector(popupsSelectors.changeAvatar);
+const formAvatar = popupAvatar.querySelector(formSelectors.form);
+const buttonAvatarSubmit = popupAvatar.querySelector(formSelectors.submit);
 
 let userCurrentId;
 
@@ -46,9 +56,11 @@ const cardSection = new Section ({
 );
 
 
-//Popup's
+//==============Popup's===============//
+
+//Profile
 const popupProfile = new PopupWithForm(
-  '#popup-edit',
+  popupsSelectors.editProfile,
   {submitCallback: (values) => {
     popupProfile.renderLoading(true, 'Сохранение...')
     
@@ -62,15 +74,15 @@ const popupProfile = new PopupWithForm(
   }
 });
 
+//Add Card
 const popupAddCard = new PopupWithForm(
-  '#popup-add',
+  popupsSelectors.addCard,
   {submitCallback: (values) => {
     popupAddCard.renderLoading(true, 'Сохранение...')
     
     api.postCard({
       name: values.place,
-      link: values.link,
-      likes: [0]
+      link: values.link
     })
       .then((newCard) => {
           cardSection.addItem(renderCard(newCard));
@@ -85,10 +97,12 @@ const popupAddCard = new PopupWithForm(
   }
 );
 
-const popupImage = new PicturePopup('.popup-image');
+//Image Popup
+const popupImage = new PicturePopup(popupsSelectors.imagePopup);
 
+//Change Avatar
 const popupChangeAvatar = new PopupWithForm(
-  '#popup-change-avatar',
+  popupsSelectors.changeAvatar,
   {submitCallback: (values) => {
     popupChangeAvatar.renderLoading(true, 'Сохранение...');
     
@@ -104,25 +118,24 @@ const popupChangeAvatar = new PopupWithForm(
   }}
 );
 
+//Delete Card
 const popupConfirmDelete = new PopupWithConfirm(
-  '#popup-confirm-delete',
+  popupsSelectors.confirmDelete,
   {submitCallback: ({card}) => {
-    // console.log(card)
-    // console.log(card.cardId)
-    // debugger
     popupConfirmDelete.renderLoading(true, 'Удаление...');
     
     api.deleteCard(card.cardId)
-      .then(
-        // console.log(card)
-        card.deleteCard()).then(popupConfirmDelete.close())
+    .then(() => {
+      card.deleteCard()})
+      .then(popupConfirmDelete.close())
       .catch(err => console.log(err))
       .finally(popupConfirmDelete.renderLoading(false))
   }}
 );
 
 
-//Render
+//==============Render================//
+
 const renderCard = (element) => {
   const createCard =  new Card(
     element,
@@ -158,7 +171,8 @@ const renderPage = () => {
 };
 
 
-//Begining
+//==============Begining==============//
+
 renderPage();
 
 buttonAdd.addEventListener('click', () => {
@@ -184,3 +198,5 @@ const validatorAddForm = new FromValidator(validationOptions, formAdd, buttonAdd
 validatorAddForm.enableValidation();
 const validatorEditForm = new FromValidator(validationOptions, formEdit, buttonEditSubmit);
 validatorEditForm.enableValidation();
+const validatorChangeAvatar = new FromValidator (validationOptions, formAvatar, buttonAvatarSubmit);
+validatorChangeAvatar.enableValidation()

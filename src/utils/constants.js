@@ -29,3 +29,16 @@ export const profileSelectors = {
   buttonAvatarSelector: '.profile__avatar-overlay',
   buttonAddSelector: '.profile__add'
 };
+
+export const popupsSelectors = {
+  editProfile: '#popup-edit',
+  addCard: '#popup-add',
+  imagePopup: '.popup-image',
+  changeAvatar: '#popup-change-avatar',
+  confirmDelete: '#popup-confirm-delete'
+}
+
+export const formSelectors = {
+  form: '.popup-form',
+  submit: '.popup-form__btn'
+}
