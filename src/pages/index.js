@@ -107,16 +107,15 @@ const popupChangeAvatar = new PopupWithForm(
 const popupConfirmDelete = new PopupWithConfirm(
   '#popup-confirm-delete',
   {submitCallback: ({card}) => {
-    console.log(card)
-    console.log(card.cardId)
-    debugger
+    // console.log(card)
+    // console.log(card.cardId)
+    // debugger
     popupConfirmDelete.renderLoading(true, 'Удаление...');
     
-    api.deleteCard(card)
-      .then(() => {
-        card.deleteCard();
-        popupConfirmDelete.close();
-      })
+    api.deleteCard(card.cardId)
+      .then(
+        // console.log(card)
+        card.deleteCard()).then(popupConfirmDelete.close())
       .catch(err => console.log(err))
       .finally(popupConfirmDelete.renderLoading(false))
   }}

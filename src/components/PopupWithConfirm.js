@@ -13,8 +13,6 @@ export default class PopupWithConfirm extends Popup {
     open(card) {
         super.open();
         
-        console.log(card)
-        console.log(card.cardId)
         this.cardId = card.cardID;
         this.card = card;
     }

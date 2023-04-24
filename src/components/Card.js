@@ -37,13 +37,16 @@ export default class Card {
     this._counter.textContent = likes.length;
   };
 
-  deleteCard() {
-    this._listItem.remove();
+  deleteCard(card) {
+    this._listItem.remove(card);
+    // debugger
     this._listItem = null;
   }
 
   _setEventListeners() {
-    this._deleteBtn.addEventListener('click', this._confirmDelete);
+    this._deleteBtn.addEventListener('click', () => {
+      this._confirmDelete()
+    });
   
     this._likeBtn.addEventListener('click', this._handleLikeCard);
   

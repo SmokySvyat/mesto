@@ -54,7 +54,6 @@ export default class Api {
           'content-type': 'application/json'
         }
       }). then(res => this._isResultOk(res))
-    //   .then(res => console.log(res))
     };
   
     postCard(data) {
@@ -69,8 +68,9 @@ export default class Api {
       .then(res => this._isResultOk(res))
     };
 
-    deleteCard({cardId}) {
-      console.log(cardID)
+    deleteCard(cardId) {
+      console.log(cardId)
+      // debugger
       return fetch(`${this._baseUrl}cards/${cardId}`, {
         method: 'DELETE',
         headers: {
@@ -78,6 +78,8 @@ export default class Api {
         }
       })
       .then(res => this._isResultOk(res))
+      .then(console.log('api ok'))
+      .catch(err => console.log(err `api not ok`))
     }
 
     like(cardId, isLiked) {
