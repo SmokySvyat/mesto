@@ -39,6 +39,8 @@ export const popupsSelectors = {
 }
 
 export const formSelectors = {
-  form: '.popup-form',
+  formProfile: "form-profile",
+  formAdd: "form-add-card",
+  formAvatar: "form-change-avatar",
   submit: '.popup-form__btn'
 }

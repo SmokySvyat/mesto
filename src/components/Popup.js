@@ -2,7 +2,6 @@ export default class Popup {
     constructor(popupSelector) {
         this._popup = document.querySelector(popupSelector);
         this._closeBtn = this._popup.querySelector('.popup__close');
-        this._buttonSubmit = this._popup.querySelector('.popup-form__btn')
     };
 
     _handleEscClose = (evt) => {
@@ -17,28 +16,18 @@ export default class Popup {
         }
     };
 
-    renderLoading(isLoading, loadingText) {
-        if (!this._buttonSubmit) return;
-        if (isLoading) {
-            this.defaultText = this._buttonSubmit.value;
-            this._buttonSubmit.value = loadingText;
-        } else {
-          this._buttonSubmit.value = this.defaultText;
-        }
-      }
-
     open() {
         this._popup.classList.add('popup_active');
         document.addEventListener('keydown', this._handleEscClose);
     };
 
-    close = () => {
+    close() {
         this._popup.classList.remove('popup_active');
-        document.addEventListener('keydown', this._handleEscClose);
+        document.removeEventListener('keydown', this._handleEscClose);
     };
 
     setEventListeners() {
-        this._closeBtn.addEventListener('click', this.close);
+        this._closeBtn.addEventListener('click', () => this.close());
 
         this._popup.addEventListener('click', this._handleOverlayClose);
     };

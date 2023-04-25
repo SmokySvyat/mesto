@@ -3,11 +3,9 @@ import Popup from "./Popup.js";
 export default class PopupWithConfirm extends Popup {
     constructor(selector, {submitCallback}) {
         super (selector)
-        this._submitCallback = submitCallback
-    };
-
-    close() {
-        super.close();
+        this._submitCallback = submitCallback;
+        this._buttonSubmit = this._popup.querySelector('.popup-form__btn');
+        this._buttonSubmitText = this._buttonSubmit.value;
     };
 
     open(card) {
@@ -15,7 +13,7 @@ export default class PopupWithConfirm extends Popup {
         
         this.cardId = card.cardID;
         this.card = card;
-    }
+    };
 
     setEventListeners() {
         super.setEventListeners();
@@ -24,5 +22,14 @@ export default class PopupWithConfirm extends Popup {
             event.preventDefault()
             this._submitCallback(this)
         });
-    }
+    };
+
+    renderLoading(isLoading, loadingText) {
+        if (!this._buttonSubmit) return;
+        if (isLoading) {
+            this._buttonSubmit.value = loadingText;
+        } else {
+          this._buttonSubmit.value = this._buttonSubmitText
+        }
+    };
 }

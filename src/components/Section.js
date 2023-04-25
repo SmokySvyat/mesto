@@ -14,7 +14,7 @@
       this._container.prepend(element);
     };
 
-    addItemReverse(element) {
+    addItemsReverse(element) {
       this._container.append(element);
     }
   }
