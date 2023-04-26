@@ -4,8 +4,8 @@
         this._container = document.querySelector(containerSelector);
     };
 
-    render() {
-      this._items.forEach(item => {
+    render(items) {
+      items.forEach(item => {
         this._renderer(item);
       });
     };

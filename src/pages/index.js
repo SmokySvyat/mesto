@@ -49,7 +49,7 @@ const userInfo = new UserInfo ({
 
 const cardSection = new Section ({
   renderer: (element) => {
-    cardSection.addItem(renderCard(element))
+    cardSection.addItemsReverse(renderCard(element))
   }
   },
   cardTemplateOptions.containerSelector
@@ -160,7 +160,8 @@ const renderPage = () => {
     api.getProfile()
   ]).then(([cardResult, profileResult]) => {
     userCurrentId = profileResult._id;
-    cardResult.forEach(card => cardSection.addItemsReverse(renderCard(card)))
+    console.log(cardResult)
+    cardSection.render(cardResult)
     userInfo.setUserInfo(profileResult)
   })
     .catch(err => console.log(err))
